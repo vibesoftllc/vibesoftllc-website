@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vibesoft LLC — App Development</title>
+  <meta name="description" content="About Vibesoft LLC — Florida-based mobile and web application development." />
+  <title>About — Vibesoft LLC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -32,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* Background mesh */
     body::before {
       content: '';
       position: fixed;
@@ -44,7 +44,6 @@
       z-index: 0;
     }
 
-    /* Grid overlay */
     body::after {
       content: '';
       position: fixed;
@@ -66,7 +65,6 @@
       padding: 0 2rem;
     }
 
-    /* NAV */
     nav {
       position: relative;
       z-index: 10;
@@ -86,6 +84,18 @@
       text-decoration: none;
     }
     .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
     .nav-contact {
       font-size: 0.85rem;
       color: var(--muted);
@@ -97,12 +107,12 @@
     }
     .nav-contact:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* HERO */
-    .hero {
-      padding: 7rem 0 5rem;
-      animation: fadeUp 0.9s ease both;
+    /* PAGE HEADER */
+    .page-header {
+      padding: 5rem 0 3rem;
+      animation: fadeUp 0.8s ease both;
     }
-    .hero-eyebrow {
+    .page-eyebrow {
       display: inline-block;
       font-size: 0.75rem;
       font-weight: 500;
@@ -113,64 +123,47 @@
       border: 1px solid rgba(59,130,246,0.3);
       padding: 0.3rem 0.9rem;
       border-radius: 100px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
-    .hero h1 {
+    .page-header h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
       line-height: 1.1;
       letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      max-width: 700px;
+      margin-bottom: 1rem;
+      max-width: 640px;
     }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero p {
-      font-size: 1.1rem;
+    .page-header h1 em { font-style: italic; color: var(--accent); }
+    .page-header p {
+      font-size: 1.05rem;
       color: var(--muted);
       max-width: 520px;
-      margin-bottom: 2.5rem;
     }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      padding: 0.8rem 1.8rem;
-      border-radius: 100px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: opacity 0.2s, transform 0.2s;
-      box-shadow: 0 0 30px rgba(59,130,246,0.3);
-    }
-    .hero-cta:hover { opacity: 0.85; transform: translateY(-1px); }
 
     /* DIVIDER */
     .divider {
       border: none;
       border-top: 1px solid var(--border);
-      margin: 4rem 0;
+      margin: 3.5rem 0;
     }
 
-    /* SERVICES */
+    /* SECTION LABEL */
     .section-label {
       font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
+
+    /* SERVICE CARDS */
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 5rem;
-      animation: fadeUp 0.9s 0.2s ease both;
+      margin-bottom: 4rem;
+      animation: fadeUp 0.8s 0.15s ease both;
     }
     .service-card {
       background: var(--surface);
@@ -180,64 +173,87 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .service-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-2px); }
-    .service-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
+    .service-icon { font-size: 1.5rem; margin-bottom: 1rem; }
     .service-card h3 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
       letter-spacing: -0.01em;
     }
-    .service-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
 
-    /* ABOUT */
-    .about {
+    /* COMPANY INFO */
+    .company-block {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 3rem;
-      margin-bottom: 5rem;
-      animation: fadeUp 0.9s 0.3s ease both;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      animation: fadeUp 0.8s 0.25s ease both;
     }
-    .about h2 {
+    .company-block h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
-    .about p {
+    .company-block p {
       color: var(--muted);
       font-size: 0.95rem;
       max-width: 580px;
+      margin-bottom: 0.75rem;
     }
-    .about-meta {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
+    .company-meta {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
     }
-    .meta-item {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
+    .meta-item { font-size: 0.82rem; color: var(--muted); }
     .meta-item strong {
       display: block;
       color: var(--text);
       font-weight: 500;
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.15rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
+
+    /* SUPPORT SECTION */
+    .support-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .support-block h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .support-block p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; max-width: 560px; }
+    .support-block a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(59,130,246,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .support-block a:hover { border-color: var(--accent); }
 
     /* CONTACT */
     .contact {
       text-align: center;
-      padding: 4rem 0 6rem;
-      animation: fadeUp 0.9s 0.4s ease both;
+      padding: 3rem 0 6rem;
+      animation: fadeUp 0.8s 0.35s ease both;
     }
     .contact h2 {
       font-family: 'DM Serif Display', serif;
@@ -257,21 +273,6 @@
     }
     .contact a:hover { border-color: var(--accent); }
 
-    /* NAV LINKS */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .nav-link {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: var(--text); }
-
-    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 0;
@@ -298,7 +299,7 @@
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--accent); }
-    footer .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
     .footer-affiliate {
       font-size: 0.72rem;
       color: rgba(148,163,184,0.5);
@@ -314,10 +315,9 @@
     }
 
     @media (max-width: 600px) {
-      .hero { padding: 4rem 0 3rem; }
-      .about { padding: 2rem; }
-      .about-meta { gap: 1.2rem; }
       .nav-link { display: none; }
+      .company-block { padding: 1.75rem; }
+      .support-block { padding: 1.75rem; }
     }
   </style>
 </head>
@@ -325,7 +325,7 @@
 
   <nav>
     <div class="container">
-      <a class="logo" href="#">Vibe<span>soft</span></a>
+      <a class="logo" href="index.html">Vibe<span>soft</span></a>
       <div class="nav-links">
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-contact" href="mailto:admin@vibesoftllc.com">Get in touch</a>
@@ -336,11 +336,10 @@
   <main>
     <div class="container">
 
-      <section class="hero">
-        <div class="hero-eyebrow">Florida-Based App Development</div>
-        <h1>Apps built with <em>purpose</em> and precision.</h1>
+      <section class="page-header">
+        <div class="page-eyebrow">Florida-Based App Development</div>
+        <h1>Software built with <em>purpose</em>.</h1>
         <p>Vibesoft LLC designs and develops mobile and web applications that solve real problems — clean, fast, and built to last.</p>
-        <a class="hero-cta" href="mailto:admin@vibesoftllc.com">Start a conversation →</a>
       </section>
 
       <hr class="divider" />
@@ -350,27 +349,37 @@
         <div class="service-card">
           <div class="service-icon">📱</div>
           <h3>Mobile App Development</h3>
-          <p>Native and cross-platform apps for iOS and Android, built for performance and usability.</p>
+          <p>Native and cross-platform apps for iOS and Android, built for performance, reliability, and an excellent user experience.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🌐</div>
           <h3>Web Applications</h3>
-          <p>Responsive, modern web apps with intuitive interfaces and reliable backends.</p>
+          <p>Responsive, modern web apps with intuitive interfaces and reliable backends that scale with your needs.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🔧</div>
           <h3>Software Consulting</h3>
-          <p>Technical strategy and architecture guidance for businesses building digital products.</p>
+          <p>Technical strategy, architecture guidance, and code review for businesses building or improving digital products.</p>
         </div>
       </div>
 
-      <div class="about">
+      <div class="company-block">
         <h2>About Vibesoft LLC</h2>
         <p>Vibesoft LLC is a software company focused on developing thoughtful, well-crafted applications. We work closely with clients to understand their goals and deliver solutions that are both functional and elegant.</p>
-        <div class="about-meta">
+        <p>We believe great software starts with a clear understanding of the problem. Every product we build is designed from the user's perspective first — then engineered to be fast, maintainable, and ready to grow.</p>
+        <div class="company-meta">
           <div class="meta-item"><strong>Entity</strong>Limited Liability Company</div>
+          <div class="meta-item"><strong>Jurisdiction</strong>State of Florida</div>
+          <div class="meta-item"><strong>Focus</strong>iOS, Android, Web</div>
           <div class="meta-item"><strong>Contact</strong>admin@vibesoftllc.com</div>
         </div>
+      </div>
+
+      <div class="support-block" id="support">
+        <h2>Support</h2>
+        <p>Need help with a Vibesoft application? We're here to help. Reach us directly by email and we'll respond as quickly as possible.</p>
+        <p>For bug reports, feature requests, or general questions about any app published by Vibesoft LLC, contact us at:</p>
+        <a href="mailto:admin@vibesoftllc.com">admin@vibesoftllc.com</a>
       </div>
 
       <section class="contact">
