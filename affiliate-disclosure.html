@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Affiliate Disclosure for Vibesoft LLC and its applications." />
+  <title>Affiliate Disclosure — Vibesoft LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59,130,246,0.18);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(59,130,246,0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(99,102,241,0.07) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      position: relative;
+      z-index: 10;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-contact {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-contact:hover { border-color: var(--accent); color: var(--accent); }
+
+    .page-header {
+      padding: 4rem 0 2.5rem;
+      animation: fadeUp 0.7s ease both;
+    }
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta { font-size: 0.82rem; color: var(--muted); }
+
+    .prose {
+      padding-bottom: 5rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .prose section {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .prose section:first-child { border-top: none; padding-top: 0; }
+    .prose h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+    }
+    .prose p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
+    }
+    .prose ul {
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-left: 1.4rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
+    }
+    .prose li { margin-bottom: 0.35rem; }
+    .prose a { color: var(--accent); text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+    .prose strong { color: var(--text); font-weight: 500; }
+
+    .disclosure-callout {
+      background: var(--surface);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .disclosure-callout p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+      max-width: none;
+    }
+    .disclosure-callout strong { color: var(--accent); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      position: relative;
+      z-index: 1;
+    }
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-affiliate {
+      font-size: 0.72rem;
+      color: rgba(148,163,184,0.5);
+      max-width: 580px;
+      line-height: 1.5;
+    }
+    .footer-affiliate a { color: rgba(148,163,184,0.65); text-decoration: none; }
+    .footer-affiliate a:hover { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a class="logo" href="index.html">Vibe<span>soft</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-contact" href="mailto:admin@vibesoftllc.com">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <div class="page-header">
+        <h1>Affiliate Disclosure</h1>
+        <p class="meta">Effective April 30, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+      </div>
+
+      <div class="disclosure-callout">
+        <p><strong>Summary:</strong> Some links in Vibesoft applications may be affiliate links. If you click one and make a purchase, we may receive a commission — at no additional cost to you. This helps support the development of our free and low-cost apps.</p>
+      </div>
+
+      <div class="prose">
+
+        <section>
+          <p>Vibesoft LLC ("Vibesoft," "we," "our," or "us") participates in affiliate marketing programs. This Affiliate Disclosure explains how these relationships work and how they may affect the content in our applications, in compliance with the Federal Trade Commission (FTC) guidelines on endorsements and testimonials.</p>
+        </section>
+
+        <section>
+          <h2>What Is an Affiliate Link?</h2>
+          <p>An affiliate link is a specially tracked URL that connects to a third-party product or service. When you click an affiliate link and complete a qualifying action — such as making a purchase or signing up for a service — Vibesoft may receive a commission or referral fee from that third party.</p>
+          <p>The price you pay is not affected by whether you use an affiliate link. You pay the same amount you would if you navigated to the product directly.</p>
+        </section>
+
+        <section>
+          <h2>Where Affiliate Links May Appear</h2>
+          <p>Affiliate links may appear in any application published by Vibesoft LLC, including but not limited to links to:</p>
+          <ul>
+            <li>Travel booking platforms and providers</li>
+            <li>Software tools or services referenced within an app</li>
+            <li>Products or services recommended in-app</li>
+          </ul>
+          <p>Affiliate links are not currently present on this website (vibesoftllc.com). All links on this website are informational only.</p>
+        </section>
+
+        <section>
+          <h2>How We Identify Affiliate Content</h2>
+          <p>Where technically feasible, we label affiliate links within our applications using clear indicators such as "Affiliate Link," "Partner," or similar language near the link. We are committed to making these disclosures prominent and easy to understand.</p>
+        </section>
+
+        <section>
+          <h2>Our Commitment to Honest Recommendations</h2>
+          <p>Affiliate relationships do not influence our editorial decisions. We do not feature, rank, or recommend products solely because of an affiliate arrangement. Our goal is to surface the most useful information for our users; affiliate income is incidental to that goal, not the driver of it.</p>
+          <p>We only participate in affiliate programs for products and services that we believe are genuinely useful and relevant to our users.</p>
+        </section>
+
+        <section>
+          <h2>FTC Compliance</h2>
+          <p>This disclosure is provided in accordance with the FTC's <em>Guides Concerning the Use of Endorsements and Testimonials in Advertising</em> (16 CFR Part 255). The FTC requires that material connections between endorsers and brands be disclosed clearly and conspicuously. Our affiliate relationships constitute such a material connection.</p>
+        </section>
+
+        <section>
+          <h2>Questions</h2>
+          <p>If you have questions about our affiliate relationships or this disclosure, please contact us:</p>
+          <p>
+            <strong>Vibesoft LLC</strong><br />
+            <a href="mailto:admin@vibesoftllc.com">admin@vibesoftllc.com</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      </div>
+      <p class="footer-copy">© 2026 Vibesoft LLC. All rights reserved.</p>
+      <p class="footer-affiliate">Some Vibesoft applications may contain affiliate links. We may earn a commission when you click through and make a purchase, at no additional cost to you. <a href="affiliate-disclosure.html">Learn more</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

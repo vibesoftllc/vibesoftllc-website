@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Privacy Policy for Vibesoft LLC and its applications." />
+  <title>Privacy Policy — Vibesoft LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59,130,246,0.18);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(59,130,246,0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(99,102,241,0.07) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      position: relative;
+      z-index: 10;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-contact {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-contact:hover { border-color: var(--accent); color: var(--accent); }
+
+    .page-header {
+      padding: 4rem 0 2.5rem;
+      animation: fadeUp 0.7s ease both;
+    }
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta { font-size: 0.82rem; color: var(--muted); }
+
+    .prose {
+      padding-bottom: 5rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .prose section {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .prose section:first-child { border-top: none; padding-top: 0; }
+    .prose h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+    }
+    .prose h3 {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text);
+      margin: 1.25rem 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .prose p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
+    }
+    .prose ul {
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-left: 1.4rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
+    }
+    .prose li { margin-bottom: 0.35rem; }
+    .prose a { color: var(--accent); text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+    .prose strong { color: var(--text); font-weight: 500; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      position: relative;
+      z-index: 1;
+    }
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-affiliate {
+      font-size: 0.72rem;
+      color: rgba(148,163,184,0.5);
+      max-width: 580px;
+      line-height: 1.5;
+    }
+    .footer-affiliate a { color: rgba(148,163,184,0.65); text-decoration: none; }
+    .footer-affiliate a:hover { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .nav-link { display: none; }
+      footer .container { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a class="logo" href="index.html">Vibe<span>soft</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-contact" href="mailto:admin@vibesoftllc.com">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <div class="page-header">
+        <h1>Privacy Policy</h1>
+        <p class="meta">Effective April 30, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+      </div>
+
+      <div class="prose">
+
+        <section>
+          <p>Vibesoft LLC ("Vibesoft," "we," "our," or "us") is a Florida limited liability company. This Privacy Policy describes how we collect, use, and protect information when you visit our website at vibesoftllc.com or use any application we publish. By using our website or applications, you agree to the practices described in this policy.</p>
+        </section>
+
+        <section>
+          <h2>Information We Collect</h2>
+
+          <h3>On This Website</h3>
+          <p>This website is a static informational site. We do not operate analytics services, tracking pixels, behavioral advertising networks, or user account systems on this site. We do not collect any personal information through web forms.</p>
+          <p>If you contact us using a "mailto:" link, your email client will open a message addressed to us. Any message you choose to send will transmit your email address and message content to us.</p>
+
+          <h3>In Our Applications</h3>
+          <p>Each application we publish may collect different types of information depending on its features. The data practices specific to each app are described in that app's supplemental privacy notice, which is accessible from its App Store or Google Play listing. Information our applications may collect includes:</p>
+          <ul>
+            <li>Information you provide directly (name, email address, preferences)</li>
+            <li>Device identifiers and operating system information</li>
+            <li>In-app usage and interaction data</li>
+            <li>Search queries and filters you configure within the app</li>
+            <li>Optional account information if the app supports accounts</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Third-Party Services</h2>
+          <p>This website loads typefaces from Google Fonts. When the page loads, your browser sends a request to Google's servers, which may log your IP address. This is governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</p>
+          <p>Our individual applications may integrate third-party services (such as analytics, crash reporting, or advertising networks). Those services and their data practices are disclosed in each app's supplemental privacy notice.</p>
+        </section>
+
+        <section>
+          <h2>Cookies and Tracking Technologies</h2>
+          <p>This website does not set cookies or use tracking technologies of any kind. Individual applications may use local storage, cookies, or similar mechanisms for functionality (such as saving preferences); details are covered in the applicable app-specific privacy notice.</p>
+        </section>
+
+        <section>
+          <h2>How We Use Your Information</h2>
+          <p>Information received through email contact on this website is used solely to respond to your inquiry. Information collected through our applications is used to:</p>
+          <ul>
+            <li>Provide, maintain, and improve the application's features</li>
+            <li>Respond to support requests</li>
+            <li>Deliver optional notifications where you have opted in</li>
+            <li>Analyze aggregate usage to improve user experience</li>
+          </ul>
+          <p>We do not sell your personal information.</p>
+        </section>
+
+        <section>
+          <h2>Information Sharing</h2>
+          <p>We do not sell, rent, or share your personal information with third parties for their marketing purposes. We may share information only in these circumstances:</p>
+          <ul>
+            <li><strong>Service providers:</strong> Third parties that help us operate our applications, under agreements that limit their use of your data to providing those services.</li>
+            <li><strong>Legal requirements:</strong> When required by law, regulation, court order, or valid legal process.</li>
+            <li><strong>Safety:</strong> When necessary to protect the rights, property, or safety of Vibesoft, our users, or the public.</li>
+            <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets, in which case the successor will be bound by this policy.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Data Retention</h2>
+          <p>Email correspondence is retained for as long as needed to address your inquiry and as required by applicable law. Retention periods for data collected through individual applications are described in their respective privacy notices.</p>
+        </section>
+
+        <section>
+          <h2>Children's Privacy</h2>
+          <p>Our website and applications are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us at <a href="mailto:admin@vibesoftllc.com">admin@vibesoftllc.com</a> and we will promptly delete it.</p>
+        </section>
+
+        <section>
+          <h2>Your Privacy Rights</h2>
+          <p><strong>All users</strong> may contact us to ask what information we hold, request correction or deletion, or raise any privacy concern.</p>
+          <p><strong>California residents</strong> have the following rights under the California Consumer Privacy Act (CCPA):</p>
+          <ul>
+            <li>The right to know what personal information is collected about you</li>
+            <li>The right to delete personal information we hold</li>
+            <li>The right to opt out of the sale of personal information (we do not sell personal information)</li>
+            <li>The right to non-discrimination for exercising these rights</li>
+          </ul>
+          <p>To exercise any of these rights, contact us at <a href="mailto:admin@vibesoftllc.com">admin@vibesoftllc.com</a>. We will respond to verifiable requests within 45 days.</p>
+        </section>
+
+        <section>
+          <h2>Security</h2>
+          <p>We implement reasonable technical and organizational measures to protect the information we hold. No method of transmission over the internet or electronic storage is completely secure, however, and we cannot guarantee absolute security.</p>
+        </section>
+
+        <section>
+          <h2>Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Effective" date at the top of this page. Continued use of our website or applications after changes are posted constitutes your acceptance of the updated policy.</p>
+        </section>
+
+        <section>
+          <h2>Contact Us</h2>
+          <p>If you have questions or concerns about this Privacy Policy, please reach out:</p>
+          <p>
+            <strong>Vibesoft LLC</strong><br />
+            <a href="mailto:admin@vibesoftllc.com">admin@vibesoftllc.com</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      </div>
+      <p class="footer-copy">© 2026 Vibesoft LLC. All rights reserved.</p>
+      <p class="footer-affiliate">Some Vibesoft applications may contain affiliate links. We may earn a commission when you click through and make a purchase, at no additional cost to you. <a href="affiliate-disclosure.html">Learn more</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
