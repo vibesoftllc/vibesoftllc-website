@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is the marketing/landing page for Vibesoft LLC, a Florida-based app development company. It is a single-file static site deployed via GitHub Pages at `vibesoftllc.com`.
+This is the marketing/landing page for Vibesoft LLC, an app development company. It is a single-file static site deployed via GitHub Pages at `vibesoftllc.com`.
 
 ## Structure
 
