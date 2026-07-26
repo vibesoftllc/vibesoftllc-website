@@ -23,6 +23,14 @@ The same applies to the markup for `nav`, `footer` (footer links + copyright + a
 
 Page-specific CSS does exist on top of the shared base: `index.html` has `.hero`/`.about`, `about.html` has `.company-block`/`.support-block`, and the three legal pages have `.prose`.
 
+## Products
+
+The "What we've built" grid on `index.html` uses `.badge` to mark status: `.badge-flagship` for CruiseSort, `.badge-soon` for anything still in App Store review. When an app is approved, swap its badge and wrap the `<h3>` in a link to its store page.
+
+Links to `cruisesort.com` are deliberate SEO backlinks — keep them as plain followed links (no `rel="nofollow"`, no `target="_blank"`).
+
+**Outstanding:** the Nag card has no description — it shipped with only "Currently in App Store review." because the copy wasn't available yet. It needs a one-line description of what the app does, and a store link once approved.
+
 ## Theming
 
 The site is **light by default** and supports dark mode three ways, in priority order:

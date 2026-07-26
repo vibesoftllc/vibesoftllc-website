@@ -291,6 +291,35 @@
     .service-card h3 a:hover,
     .service-card p a:hover { border-color: var(--accent); }
 
+    /* PRODUCTS */
+    .product-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .product-head .service-icon { margin-bottom: 0; }
+    .badge {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .badge-flagship {
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-border);
+    }
+    .badge-soon {
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
     /* ABOUT */
     .about {
       background: var(--surface);
@@ -499,9 +528,20 @@
       <p class="section-label">What we've built</p>
       <div class="services">
         <div class="service-card">
-          <div class="service-icon">🚢</div>
+          <div class="product-head">
+            <div class="service-icon">🚢</div>
+            <span class="badge badge-flagship">Flagship</span>
+          </div>
           <h3><a href="https://cruisesort.com">CruiseSort</a></h3>
-          <p>A cruise comparison platform that brings every major cruise line into one place and ranks sailings on the true total cost — fare plus taxes, fees, port charges and gratuities — with transparent scoring and interactive route maps. <a href="https://cruisesort.com">Visit CruiseSort &rarr;</a></p>
+          <p>Our flagship product. A cruise comparison platform that brings every major cruise line into one place and ranks sailings on the true total cost — fare plus taxes, fees, port charges and gratuities — with transparent scoring and interactive route maps. <a href="https://cruisesort.com">Visit CruiseSort &rarr;</a></p>
+        </div>
+        <div class="service-card">
+          <div class="product-head">
+            <div class="service-icon">🔔</div>
+            <span class="badge badge-soon">In review</span>
+          </div>
+          <h3>Nag</h3>
+          <p>Currently in App Store review.</p>
         </div>
       </div>
 
