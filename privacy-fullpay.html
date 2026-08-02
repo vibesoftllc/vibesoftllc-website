@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vibesoft LLC — App Development</title>
+  <meta name="description" content="Privacy notice for FullPay: Video Poker Trainer. The app makes no network requests and collects no data." />
+  <title>Privacy — FullPay: Video Poker Trainer</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -95,7 +96,6 @@
       transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* Background mesh */
     body::before {
       content: '';
       position: fixed;
@@ -107,7 +107,6 @@
       z-index: 0;
     }
 
-    /* Grid overlay */
     body::after {
       content: '';
       position: fixed;
@@ -129,7 +128,6 @@
       padding: 0 2rem;
     }
 
-    /* NAV */
     nav {
       position: relative;
       z-index: 10;
@@ -149,6 +147,18 @@
       text-decoration: none;
     }
     .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
     .nav-contact {
       font-size: 0.85rem;
       color: var(--muted);
@@ -183,232 +193,61 @@
     [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
     [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
-    /* HERO */
-    .hero {
-      padding: 7rem 0 5rem;
-      animation: fadeUp 0.9s ease both;
+    .page-header {
+      padding: 4rem 0 2.5rem;
+      animation: fadeUp 0.7s ease both;
     }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-glow);
-      border: 1px solid var(--accent-border);
-      padding: 0.3rem 0.9rem;
-      border-radius: 100px;
-      margin-bottom: 2rem;
-    }
-    .hero h1 {
+    .page-header h1 {
       font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-size: clamp(2.2rem, 5vw, 3rem);
       line-height: 1.1;
       letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      max-width: 700px;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-    }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
-      color: var(--cta-text);
-      text-decoration: none;
-      padding: 0.8rem 1.8rem;
-      border-radius: 100px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: opacity 0.2s, transform 0.2s;
-      box-shadow: var(--cta-shadow);
-    }
-    .hero-cta:hover { opacity: 0.85; transform: translateY(-1px); }
-
-    /* DIVIDER */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 4rem 0;
-    }
-
-    /* SERVICES */
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 5rem;
-      animation: fadeUp 0.9s 0.2s ease both;
-    }
-    .service-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.8rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .service-card:hover { border-color: var(--accent-hover); transform: translateY(-2px); }
-    .service-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .service-card h3 {
-      font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: 1.1rem;
       margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
     }
-    .service-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .service-card h3 a,
-    .service-card p a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-border);
-      transition: border-color 0.2s;
-    }
-    .service-card h3 a:hover,
-    .service-card p a:hover { border-color: var(--accent); }
+    .page-header .meta { font-size: 0.82rem; color: var(--muted); }
 
-    /* PRODUCTS */
-    .product-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
+    .prose {
+      padding-bottom: 5rem;
+      animation: fadeUp 0.7s 0.1s ease both;
     }
-    .product-head .service-icon { margin-bottom: 0; }
-    .badge {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      border-radius: 100px;
-      white-space: nowrap;
+    .prose section {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-bottom: 2rem;
     }
-    .badge-flagship {
-      color: var(--accent);
-      background: var(--accent-glow);
-      border: 1px solid var(--accent-border);
-    }
-    .badge-soon {
-      color: var(--muted);
-      background: transparent;
-      border: 1px solid var(--border);
-    }
-
-    /* ABOUT */
-    .about {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 3rem;
-      margin-bottom: 5rem;
-      animation: fadeUp 0.9s 0.3s ease both;
-    }
-    .about h2 {
+    .prose section:first-child { border-top: none; padding-top: 0; }
+    .prose h2 {
       font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: 1.8rem;
+      font-size: 1.35rem;
       letter-spacing: -0.02em;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
-    .about p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 580px;
-    }
-    .about-meta {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .meta-item {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    .meta-item strong {
-      display: block;
+    .prose h3 {
+      font-size: 0.92rem;
+      font-weight: 500;
       color: var(--text);
-      font-weight: 500;
-      margin-bottom: 0.1rem;
-    }
-
-    /* CONTACT */
-    .contact {
-      text-align: center;
-      padding: 4rem 0 6rem;
-      animation: fadeUp 0.9s 0.4s ease both;
-    }
-    .contact h2 {
-      font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: 2rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-    }
-    .contact p { color: var(--muted); margin-bottom: 1.5rem; }
-    .contact a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 1.05rem;
-      font-weight: 500;
-      border-bottom: 1px solid var(--accent-border);
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-    }
-    .contact a:hover { border-color: var(--accent); }
-    .contact-lines {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: baseline;
-      gap: 0.6rem 1.75rem;
-    }
-    .contact .contact-vanity {
-      margin: 0.9rem 0 0;
-      font-size: 0.78rem;
-      color: var(--faint);
+      margin: 1.25rem 0 0.5rem;
+      text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-
-    /* NAV LINKS */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .nav-link {
-      font-size: 0.85rem;
+    .prose p {
       color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 0.92rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
     }
-    .nav-link:hover { color: var(--text); }
+    .prose ul {
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-left: 1.4rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
+    }
+    .prose li { margin-bottom: 0.35rem; }
+    .prose a { color: var(--accent); text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+    .prose strong { color: var(--text); font-weight: 500; }
 
-    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 0;
@@ -435,7 +274,7 @@
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--accent); }
-    footer .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
     .footer-affiliate {
       font-size: 0.72rem;
       color: var(--faint);
@@ -446,15 +285,13 @@
     .footer-affiliate a:hover { color: var(--accent); }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 600px) {
-      .hero { padding: 4rem 0 3rem; }
-      .about { padding: 2rem; }
-      .about-meta { gap: 1.2rem; }
       .nav-link { display: none; }
+      footer .container { text-align: center; }
     }
   </style>
   <script>
@@ -482,7 +319,7 @@
 
   <nav>
     <div class="container">
-      <a class="logo" href="#">Vibe<span>soft</span></a>
+      <a class="logo" href="index.html">Vibe<span>soft</span></a>
       <div class="nav-links">
         <a class="nav-link" href="about.html">About</a>
         <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
@@ -497,75 +334,64 @@
   <main>
     <div class="container">
 
-      <section class="hero">
-        <div class="hero-eyebrow">Mobile &amp; Web App Development</div>
-        <h1>Apps built with <em>purpose</em> and precision.</h1>
-        <p>Vibesoft LLC designs and develops mobile and web applications that solve real problems — clean, fast, and built to last.</p>
-        <a class="hero-cta" href="mailto:dev@vibesoftllc.com">Start a conversation →</a>
+      <div class="page-header">
+        <h1>FullPay: Video Poker Trainer</h1>
+        <p class="meta">Privacy notice &nbsp;·&nbsp; Effective August 2, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+      </div>
+
+      <div class="prose">
+
+        <section>
+          <p><strong>FullPay makes no network requests at all.</strong> There is no server, no account, and no analytics. The strategy engine runs entirely on your device, and the app works offline permanently.</p>
+          <p>Its App Store privacy label reads <strong>Data Not Collected</strong>, in every category.</p>
+        </section>
+
+        <section>
+          <h2>What FullPay stores</h2>
+          <p>Two things, both in local storage on your device:</p>
+          <ul>
+            <li><strong>Your trainer statistics</strong> &mdash; accuracy per game, and the expected value your mistakes cost. The app has to remember this because scoring your play is the point of it.</li>
+            <li><strong>Your preferences</strong> &mdash; which paytable you last played, sound and haptics settings, blackjack rule variant, whether to show the splash screen.</li>
+          </ul>
+          <p>Neither leaves the device. There is no account to attach them to and nowhere to send them.</p>
+        </section>
+
+        <section>
+          <h2>No wagering, no money, no gambling data</h2>
+          <p>FullPay is a training tool. It simulates video poker in order to teach optimal play against real paytables. There is no real-money play, no wagering, no deposits, no withdrawals, and no link to any gambling operator. The credits in the app are a teaching device and have no value.</p>
+          <p>Because none of that exists, there is no financial or gambling activity to record, and none is recorded.</p>
+          <p>The app is rated 18+ for simulated gambling.</p>
+        </section>
+
+        <section>
+          <h2>Purchases</h2>
+          <p>FullPay is free to download, with Jacks or Better and the complete trainer free permanently. A single optional in-app purchase, <strong>FullPay Complete</strong> ($9.99, one time, no subscription), unlocks the other games plus the blackjack and keno modules. Family Sharing is enabled.</p>
+          <p>Payment is handled entirely by Apple. We never see your payment details or your Apple Account. Entitlement is verified on the device by StoreKit &mdash; there is no receipt server, and no purchase information is reported to us.</p>
+        </section>
+
+        <section>
+          <h2>Analytics, tracking, and advertising</h2>
+          <p>There are none. FullPay contains no analytics framework, no crash reporter, no advertising identifier, and no third-party SDK of any kind. It requests no location, contacts, camera, microphone, or photo access.</p>
+        </section>
+
+        <section>
+          <h2>Deleting your data</h2>
+          <p>Deleting the app removes your statistics and preferences from the device. There is nothing for us to delete on our end, because we never had it.</p>
+        </section>
+
+        <section>
+          <h2>Children</h2>
+          <p>FullPay is rated 18+ and is not directed at children. It collects no personal information from anyone, of any age.</p>
+        </section>
+
+        <section>
+          <h2>The company policy</h2>
+          <p>This notice covers one application. The company-wide policy, which also covers this website and how to reach us about a privacy question, is at <a href="privacy.html">vibesoftllc.com/privacy</a>.</p>
+          <p>Questions about this app: <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a></p>
+
       </section>
 
-      <hr class="divider" />
-
-      <p class="section-label">What we do</p>
-      <div class="services">
-        <div class="service-card">
-          <div class="service-icon">📱</div>
-          <h3>Mobile App Development</h3>
-          <p>Native and cross-platform apps for iOS and Android, built for performance and usability.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🌐</div>
-          <h3>Web Applications</h3>
-          <p>Responsive, modern web apps with intuitive interfaces and reliable backends.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🔧</div>
-          <h3>Software Consulting</h3>
-          <p>Technical strategy and architecture guidance for businesses building digital products.</p>
-        </div>
       </div>
-
-      <p class="section-label">What we've built</p>
-      <div class="services">
-        <div class="service-card">
-          <div class="product-head">
-            <div class="service-icon">🚢</div>
-            <span class="badge badge-flagship">Flagship</span>
-          </div>
-          <h3><a href="https://cruisesort.com">CruiseSort</a></h3>
-          <p>Our flagship product. A cruise comparison platform that brings every major cruise line into one place and ranks sailings on the true total cost — fare plus taxes, fees, port charges and gratuities — with transparent scoring and interactive route maps. <a href="https://cruisesort.com">Visit CruiseSort &rarr;</a></p>
-        </div>
-        <div class="service-card">
-          <div class="product-head">
-            <div class="service-icon">🔔</div>
-            <span class="badge badge-soon">In review</span>
-          </div>
-          <h3>Nag</h3>
-          <p>Currently in App Store review.</p>
-        </div>
-      </div>
-
-      <div class="about">
-        <h2>About Vibesoft LLC</h2>
-        <p>Vibesoft LLC is a software company focused on developing thoughtful, well-crafted applications. We work closely with clients to understand their goals and deliver solutions that are both functional and elegant.</p>
-        <div class="about-meta">
-          <div class="meta-item"><strong>Entity</strong>Limited Liability Company</div>
-          <div class="meta-item"><strong>Contact</strong>dev@vibesoftllc.com</div>
-          <div class="meta-item"><strong>Support</strong>dev@vibesoftllc.com</div>
-          <div class="meta-item"><strong>Phone</strong>(352) 352-7447</div>
-        </div>
-      </div>
-
-      <section class="contact">
-        <h2>Let's build something.</h2>
-        <p>Have a project in mind? We'd love to hear about it.</p>
-        <div class="contact-lines">
-          <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a>
-          <a href="tel:+13523527447">(352) 352-7447</a>
-        </div>
-        <p class="contact-vanity">(FLA) FLA-SHIP &nbsp;·&nbsp; App support: dev@vibesoftllc.com</p>
-      </section>
-
     </div>
   </main>
 
