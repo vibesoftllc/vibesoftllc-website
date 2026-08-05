@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Privacy Policy for Vibesoft LLC and its applications." />
-  <title>Privacy Policy — Vibesoft LLC</title>
+  <meta name="description" content="Privacy notice for MileClaim. No data collection; three named exceptions, each described individually." />
+  <title>Privacy — MileClaim</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -335,109 +335,104 @@
     <div class="container">
 
       <div class="page-header">
-        <h1>Privacy Policy</h1>
-        <p class="meta">Effective August 2, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+        <h1>MileClaim</h1>
+        <p class="meta">Privacy notice &nbsp;·&nbsp; Effective August 5, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
       </div>
 
       <div class="prose">
 
         <section>
-          <p>Vibesoft LLC ("Vibesoft," "we," "our," or "us") is a limited liability company. This Privacy Policy describes how we collect, use, and protect information when you visit our website at vibesoftllc.com or use any application we publish. By using our website or applications, you agree to the practices described in this policy.</p>
-        </section>
-
-        <section>
-          <h2>Information We Collect</h2>
-
-          <h3>On This Website</h3>
-          <p>This website is a static informational site. We do not operate analytics services, tracking pixels, behavioral advertising networks, or user account systems on this site. We do not collect any personal information through web forms.</p>
-          <p>If you contact us using a "mailto:" link, your email client will open a message addressed to us. Any message you choose to send will transmit your email address and message content to us.</p>
-
-          <h3>In Our Applications</h3>
-          <p><strong>We do not collect your data.</strong> Nothing about you is sent to a Vibesoft server, because we do not operate one. Our applications have no accounts, no analytics, no crash reporting, and no advertising identifiers.</p>
-          <p>The only circumstance in which any information leaves your device is when a feature you are using cannot work without it &mdash; a weather feature needs a location in order to return a forecast for it. In those cases we send only the minimum that feature requires, only to the party providing that function, only for as long as the request takes, and anonymised wherever anonymising it still lets the feature work.</p>
-          <p>Where an app offers such a feature, it is described at the point you switch it on, in that app&rsquo;s own privacy notice, and on its App Store listing. Features of this kind are off until you enable them, unless enabling them discloses nothing about you at all &mdash; for example, an app asking a government website for a published tax figure sends nothing about anyone, so there is nothing to consent to.</p>
-          <p>Some of our applications can store a copy of your own data in your own iCloud account, at your instruction. That is your storage and your Apple Account. It is not collection, and we have no access to it.</p>
-        </section>
-
-        <section>
-          <h2>Privacy Notices for Individual Apps</h2>
-          <p>Each application has its own notice describing exactly what it does. Where an app sends anything anywhere, its notice names the recipient, what is sent, and whether the feature is on or off when you install it.</p>
+          <p><strong>We do not collect your data.</strong> Nothing about you is sent to a Vibesoft server, because there is no Vibesoft server. There is no account, no analytics, no crash reporter, and nothing for us to breach, sell, or be compelled to hand over.</p>
+          <p>The only circumstance in which anything leaves your device is when a feature you are using cannot work otherwise. In those cases we send only the minimum that feature needs, only to the party providing it, only for as long as the request takes, and we attach nothing that identifies you or your install.</p>
+          <p>In MileClaim there are exactly three such circumstances, and they are not the same kind of thing as each other:</p>
           <ul>
-            <li><a href="privacy-nag.html">Nag Reminders</a> &mdash; makes no network requests at all</li>
-            <li><a href="privacy-fullpay.html">FullPay: Video Poker Trainer</a> &mdash; makes no network requests at all</li>
-            <li><a href="privacy-mileclaim.html">MileClaim</a> &mdash; three named exceptions, described individually</li>
+            <li><strong>Checking the IRS rates &mdash; on by default.</strong> The app asks irs.gov for a public page. Nothing about you goes with it.</li>
+            <li><strong>Maps and street addresses &mdash; off by default.</strong> Coordinates you drove to are sent to Apple, in exchange for a map tile or an address.</li>
+            <li><strong>iCloud sync &mdash; off by default.</strong> A copy of your log is kept in your own iCloud account. Not collection &mdash; it is your storage.</li>
+          </ul>
+          <p>Everything MileClaim is for &mdash; detecting drives, classifying them, calculating your deduction, exporting a log &mdash; works fully with all three switched off.</p>
+        </section>
+
+        <section>
+          <h2>What MileClaim stores, and where</h2>
+          <p>To log your mileage, the app records, on your device: the start and end coordinates of each drive and the distance between them; the date, time and duration; the purpose you assign; any note, vehicle or place name you type; your odometer readings if you enter them; and the path you drove, only if you turn on route recording.</p>
+          <p>All of it lives in a single file inside MileClaim's private storage on your iPhone, protected by iOS file encryption. That file is excluded from automatic iCloud and iTunes backups &mdash; a backup would put a copy of your movements somewhere we cannot make promises about. Exporting is how you make a copy on purpose.</p>
+        </section>
+
+        <section>
+          <h2>1. Checking the IRS mileage rates</h2>
+          <p><strong>This is on when you install the app, and it is the only thing here that is.</strong> It is on because it discloses nothing, so there is nothing for you to consent to.</p>
+          <p>Your deduction is calculated from the IRS standard mileage rates, which change &mdash; sometimes mid-year, as they did on July 1, 2026. MileClaim ships with those rates built in, and once a week it asks the IRS standard mileage rates page whether a newer one has been published.</p>
+          <p>What that request contains: no trips, no coordinates, no distances, no dates you drove, no account, no device identifier, no advertising identifier. No cookies &mdash; the request is made with cookie storage disabled and cookie acceptance switched off, so irs.gov cannot set one that would come back on next week's check and identify this install. We add no identifying headers of our own.</p>
+          <p>It is a request for a public government web page, identical for every user of MileClaim. What the IRS learns is that some device asked for a page anyone can open in a browser. As with any request over the internet, your IP address is visible to the server you contacted; we send nothing beyond it.</p>
+          <p>What the check <strong>cannot</strong> do is change a rate the app already has. A newly published rate can only be added to the end of the table. A rate already on file is never modified and never removed, whatever the page says, because people amend prior-year returns and last year's figure has to stay reproducible. If the page ever disagrees with a rate MileClaim holds, the app refuses to apply it and shows you that it happened.</p>
+          <p>Every report and export states which rates it used, the date the newest one took effect, and whether it came from the app or from irs.gov. Turning the check off is fine &mdash; the rates built into your version are used instead, and your deduction is calculated exactly as before.</p>
+        </section>
+
+        <section>
+          <h2>2. The two features that send something about you</h2>
+          <p>Both ship <strong>off</strong>. Each states what it sends and to whom on the screen where you turn it on. Neither is retroactive: switching one on changes what happens next, never what already happened.</p>
+          <h3>Show routes on a map</h3>
+          <p>MileClaim starts saving the path of each new drive, not just its start and end, in the same file on your device under the same protections. Drawing that path downloads map tiles from Apple for the area you drove in, so Apple learns roughly where you are looking at a map, as it would for any app that displays one.</p>
+          <p>Drives recorded before you turned it on have no path saved and will never gain one &mdash; those points were discarded as they arrived. Turning it back off stops new paths being saved immediately, not at the end of the current drive.</p>
+          <h3>Look up street addresses</h3>
+          <p>MileClaim sends the start and end coordinates of a trip to Apple's geocoding service, at the moment you open that trip, and receives a street address in return.</p>
+          <ul>
+            <li>Only the two endpoints. Never the route, even when routes are being recorded.</li>
+            <li>Only for trips you actually open. Turning the setting on does not sweep your history sending off a year of your movements in one burst.</li>
+            <li>Addresses are stored on your device once received, so the same place is not looked up repeatedly.</li>
+            <li>Names you gave places yourself always take precedence, and cost nothing.</li>
+          </ul>
+          <p>MileClaim attaches no account, name, or identifier of its own to these requests. What Apple's service transmits and retains is governed by <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>, not ours; we are not in a position to make promises on Apple's behalf and are not going to pretend otherwise. A coordinate cannot be anonymised and still be geocoded &mdash; the coordinate <em>is</em> the request &mdash; which is exactly why this one is off until you decide it is worth it.</p>
+        </section>
+
+        <section>
+          <h2>3. iCloud sync: your storage, not ours</h2>
+          <p><strong>This is not collection.</strong> If you turn it on, a copy of your vault is placed in your own private iCloud account, in MileClaim's app container. It is your storage, your Apple Account, and a copy you asked for. Vibesoft has no account, no access, and no way to read it. It never touches a server of ours, because there isn't one.</p>
+          <p>The file is stored in the app's private area of the container, not the Documents area, so it does not appear in the Files app and cannot be shared by accident.</p>
+          <ul>
+            <li><strong>Turning it on copies your whole existing log</strong>, and says so before it does anything, naming the number of trips. A sync that started from today would produce a cloud copy missing every drive you had already taken, which is not a backup of anything. This is the one switch whose effect reaches backwards, and it is made loud for that reason.</li>
+            <li><strong>With Advanced Data Protection</strong> enabled on your Apple Account, Apple cannot read the file either. Without it, Apple holds the keys and can be compelled to produce it. That is the part "iCloud" quietly glosses over, so it is said here plainly.</li>
+            <li><strong>Turning it off</strong> offers to delete the iCloud copy, and tells you if that did not work.</li>
           </ul>
         </section>
 
         <section>
-          <h2>Third-Party Services</h2>
-          <p>This website does not load content from third-party servers. All assets are served directly from vibesoftllc.com; no data is transmitted to any external party as a result of visiting this site.</p>
-          <p>Our applications do not integrate analytics, crash reporting, or advertising networks. Where an application uses a third party to perform a function you have asked for &mdash; a mapping provider to draw a map, a geocoder to turn a coordinate into a street address &mdash; only what that function requires is sent, and only when you use it. Those uses are named individually in the relevant app&rsquo;s privacy notice, and that provider&rsquo;s own privacy policy governs what they do with the request.</p>
+          <h2>Location and motion</h2>
+          <p>MileClaim asks for location access &mdash; including background access, if you grant it &mdash; solely to measure how far you drive. Location data is used to compute distances and is stored as described above. It leaves your device only through the two optional features in section 2, and through iCloud sync if you enable it. The IRS rate check sends no location of any kind.</p>
+          <p>The app also reads your iPhone's motion activity classification &mdash; driving, walking, or still &mdash; to tell drives apart from other movement and to avoid running GPS when you aren't in a car. This is used in the moment and is neither stored nor transmitted.</p>
         </section>
 
         <section>
-          <h2>Cookies and Tracking Technologies</h2>
-          <p>This website does not set cookies or use tracking technologies of any kind.</p>
-          <p>Our applications use no tracking technologies either. They store your own settings and content on your device, using the operating system's ordinary local storage &mdash; that data stays on the device and is not transmitted to us. Nothing in our applications profiles you, follows you between apps, or builds a record of your behaviour.</p>
+          <h2>Exports and purchases</h2>
+          <p>When you export a CSV or PDF, that file is created on your device and goes only where you send it. If you email it, message it, or save it to a cloud service, it is then subject to that service's terms, not ours.</p>
+          <p>MileClaim is sold as a one-time purchase with no subscription. Payment is handled entirely by Apple; we never see your payment details, and Apple's privacy policy governs that transaction.</p>
         </section>
 
         <section>
-          <h2>How We Use Your Information</h2>
-          <p>Information received through email contact on this website is used solely to respond to your inquiry, and for no other purpose.</p>
-          <p>We receive no information from our applications, so there is none for us to use. What an application stores stays on your device and is used only to provide the feature you are using it for &mdash; a mileage log calculates your deduction, a trainer scores your play. None of it is measured, reported, or aggregated by us.</p>
-          <p>We do not sell your personal information. We have never had any to sell.</p>
+          <h2>Analytics, tracking, and advertising</h2>
+          <p>There are none. MileClaim contains no analytics SDK, no crash reporter, no advertising identifier, and no third-party tracking code of any kind. Nothing you do in the app is measured or reported, to us or to anyone.</p>
+          <p>This is true regardless of which features you have enabled. The three circumstances above are the complete list of times MileClaim opens a connection: asking the IRS for a public page, asking Apple for a map tile or an address, and putting a file in your own iCloud. There is no fourth.</p>
         </section>
 
         <section>
-          <h2>Information Sharing</h2>
-          <p>We do not sell, rent, or share your personal information. The reason is structural rather than a promise about our conduct: your data is on your device and not on any server of ours, so there is nothing for us to share, nothing for us to lose in a breach, and nothing we could be compelled to produce.</p>
-          <p>The one exception is email you send us directly. If we were required by law, regulation, court order, or valid legal process to produce correspondence, we would have that correspondence. We would not have anything from inside an application, because we never received it.</p>
-          <p>If Vibesoft were ever acquired or its assets sold, the successor would be bound by this policy. There would still be no user data to transfer.</p>
+          <h2>Deleting your data</h2>
+          <p>Settings &rarr; <strong>Delete all data</strong> erases every trip, vehicle, and place from your device immediately, and &mdash; if you turned on iCloud sync &mdash; the copy in your iCloud account too. Deletion is permanent. There is nothing for us to delete on our end, because we never had it.</p>
+          <p>If sync is on and the iCloud copy cannot be reached at that moment, MileClaim says so rather than reporting success. A delete that quietly left a year of your movements in iCloud would be the worst thing this app could do.</p>
+          <p>Deleting the app removes the copy on your device. If you used sync, remove the iCloud copy first with Delete all data, or from iCloud settings on your Apple Account.</p>
         </section>
 
         <section>
-          <h2>Data Retention</h2>
-          <p>Email correspondence is retained for as long as needed to address your inquiry and as required by applicable law.</p>
-          <p>We hold no data from our applications, so there is no retention period to describe. Data an application stores on your device is kept until you delete it or remove the app, and each app's notice explains how to erase it.</p>
+          <h2>Children</h2>
+          <p>MileClaim is a business tool and is not directed at children. It collects no personal information from anyone, of any age.</p>
         </section>
 
         <section>
-          <h2>Children's Privacy</h2>
-          <p>Our website and applications are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us at <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a> and we will promptly delete it.</p>
-        </section>
+          <h2>The company policy</h2>
+          <p>This notice covers one application. The company-wide policy, which also covers this website and how to reach us about a privacy question, is at <a href="privacy.html">vibesoftllc.com/privacy</a>.</p>
+          <p>Questions about this app: <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a></p>
 
-        <section>
-          <h2>Your Privacy Rights</h2>
-          <p><strong>All users</strong> may contact us to ask what information we hold, request correction or deletion, or raise any privacy concern.</p>
-          <p><strong>California residents</strong> have the following rights under the California Consumer Privacy Act (CCPA):</p>
-          <ul>
-            <li>The right to know what personal information is collected about you</li>
-            <li>The right to delete personal information we hold</li>
-            <li>The right to opt out of the sale of personal information (we do not sell personal information)</li>
-            <li>The right to non-discrimination for exercising these rights</li>
-          </ul>
-          <p>To exercise any of these rights, contact us at <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a>. We will respond to verifiable requests within 45 days.</p>
-        </section>
-
-        <section>
-          <h2>Security</h2>
-          <p>We implement reasonable technical and organizational measures to protect the information we hold. No method of transmission over the internet or electronic storage is completely secure, however, and we cannot guarantee absolute security.</p>
-        </section>
-
-        <section>
-          <h2>Changes to This Policy</h2>
-          <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Effective" date at the top of this page. Continued use of our website or applications after changes are posted constitutes your acceptance of the updated policy.</p>
-        </section>
-
-        <section>
-          <h2>Contact Us</h2>
-          <p>If you have questions or concerns about this Privacy Policy, please reach out:</p>
-          <p>
-            <strong>Vibesoft LLC</strong><br />
-            <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a><br />
-            <a href="tel:+13523527447">(352) 352-7447</a> &nbsp;·&nbsp; (FLA) FLA-SHIP
-          </p>
-        </section>
+      </section>
 
       </div>
     </div>
