@@ -9,6 +9,14 @@ Marketing/landing site for Vibesoft LLC, an app development company. Static HTML
 ## Structure
 
 - `index.html` — home/landing page (hero, services, products, contact)
+- `nag.html` — Nag Reminders product page: hero + App Store badge + QR + features.
+  Carries the Smart App Banner tag (`<meta name="apple-itunes-app" content="app-id=6792002234">`)
+  and OG/Twitter card tags. Store links carry the ASC campaign token
+  (`?itscg=30200&itsct=…`) so ASC Analytics → Sources attributes web traffic.
+- `assets/` — self-hosted images only, per the privacy policy's "no third-party
+  servers" promise: `app-store-badge.svg` (official Apple badge, downloaded not
+  hotlinked), `nag-qr.svg` (QR to the listing; rendered on a white plate in CSS
+  so it scans on the dark theme), `nag-icon.png`, `nag-card.png` (OG image)
 - `about.html` — company info + support section (`#support`); used as the Apple App Store **Support URL**
 - `privacy.html` — privacy policy; used as the Apple / Google Play **privacy policy URL**
 - `terms.html` — terms of service
@@ -29,7 +37,7 @@ The "What we've built" grid on `index.html` uses `.badge` to mark status: `.badg
 
 Links to `cruisesort.com` are deliberate SEO backlinks — keep them as plain followed links (no `rel="nofollow"`, no `target="_blank"`).
 
-**Outstanding:** the Nag card has no description — it shipped with only "Currently in App Store review." because the copy wasn't available yet. It needs a one-line description of what the app does, and a store link once approved.
+Nag went live 2026-08-05: its card links to `nag.html` (which carries the store link), badge `.badge-flagship` with the text "On the App Store". New product pages should copy `nag.html`'s pattern: badge + QR download row, campaign-tokened store links, Smart App Banner, self-hosted assets.
 
 ## Theming
 

@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vibesoft LLC — App Development</title>
+  <title>Nag Reminders — nags until you actually do it | Vibesoft LLC</title>
+  <meta name="description" content="Nag watches your Apple Reminders and keeps notifying you until the task is done. Free on iPhone, iPad, and Mac." />
+  <!-- Native App Store install banner in Safari on iPhone/iPad -->
+  <meta name="apple-itunes-app" content="app-id=6792002234" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nag Reminders — nags until you actually do it" />
+  <meta property="og:description" content="Watches your Apple Reminders and keeps notifying you until it's done. Free on iPhone, iPad, and Mac." />
+  <meta property="og:url" content="https://vibesoftllc.com/nag.html" />
+  <meta property="og:image" content="https://vibesoftllc.com/assets/nag-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -183,10 +192,34 @@
     [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
     [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
-    /* HERO */
-    .hero {
-      padding: 7rem 0 5rem;
+    /* NAV LINKS */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    /* APP HERO */
+    .app-hero {
+      padding: 6rem 0 4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5rem;
       animation: fadeUp 0.9s ease both;
+    }
+    .app-icon {
+      width: 128px;
+      height: 128px;
+      border-radius: 28px;
+      flex-shrink: 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     }
     .hero-eyebrow {
       display: inline-block;
@@ -199,50 +232,73 @@
       border: 1px solid var(--accent-border);
       padding: 0.3rem 0.9rem;
       border-radius: 100px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
-    .hero h1 {
+    .app-hero h1 {
       font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
       line-height: 1.1;
       letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      max-width: 700px;
+      margin-bottom: 1.2rem;
+      max-width: 640px;
     }
-    .hero h1 em {
+    .app-hero h1 em {
       font-style: italic;
       color: var(--accent);
     }
-    .hero p {
-      font-size: 1.1rem;
+    .app-hero p {
+      font-size: 1.05rem;
       color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
+      max-width: 560px;
     }
-    .hero-cta {
-      display: inline-flex;
+
+    /* DOWNLOAD ROW: official badge + QR for the phone-on-the-desk visitor */
+    .download-row {
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
-      color: var(--cta-text);
-      text-decoration: none;
-      padding: 0.8rem 1.8rem;
-      border-radius: 100px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: opacity 0.2s, transform 0.2s;
-      box-shadow: var(--cta-shadow);
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 2.2rem 0 0;
     }
-    .hero-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+    .store-badge img {
+      height: 52px;
+      display: block;
+    }
+    .store-badge {
+      display: inline-block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .store-badge:hover { opacity: 0.85; transform: translateY(-1px); }
+    .qr-side {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    /* White plate so the code scans on the dark theme too */
+    .qr-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+      width: 92px;
+      height: 92px;
+    }
+    .qr-box img { width: 100%; height: 100%; display: block; }
+    .qr-side p {
+      font-size: 0.78rem;
+      color: var(--faint);
+      max-width: 130px;
+      line-height: 1.45;
+    }
 
     /* DIVIDER */
     .divider {
       border: none;
       border-top: 1px solid var(--border);
-      margin: 4rem 0;
+      margin: 3rem 0 4rem;
     }
 
-    /* SERVICES */
+    /* FEATURES (shared card grid) */
     .section-label {
       font-size: 0.72rem;
       font-weight: 500;
@@ -255,7 +311,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 5rem;
+      margin-bottom: 4rem;
       animation: fadeUp 0.9s 0.2s ease both;
     }
     .service-card {
@@ -281,132 +337,35 @@
       color: var(--muted);
       line-height: 1.6;
     }
-    .service-card h3 a,
-    .service-card p a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-border);
-      transition: border-color 0.2s;
-    }
-    .service-card h3 a:hover,
-    .service-card p a:hover { border-color: var(--accent); }
 
-    /* PRODUCTS */
-    .product-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .product-head .service-icon { margin-bottom: 0; }
-    .badge {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-    .badge-flagship {
-      color: var(--accent);
-      background: var(--accent-glow);
-      border: 1px solid var(--accent-border);
-    }
-    .badge-soon {
-      color: var(--muted);
-      background: transparent;
-      border: 1px solid var(--border);
-    }
-
-    /* ABOUT */
-    .about {
+    /* PRICING + PRIVACY STRIP */
+    .app-note {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 3rem;
+      padding: 2.4rem 3rem;
       margin-bottom: 5rem;
       animation: fadeUp 0.9s 0.3s ease both;
     }
-    .about h2 {
+    .app-note h2 {
       font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: 1.8rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .about p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 580px;
-    }
-    .about-meta {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .meta-item {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    .meta-item strong {
-      display: block;
-      color: var(--text);
-      font-weight: 500;
-      margin-bottom: 0.1rem;
-    }
-
-    /* CONTACT */
-    .contact {
-      text-align: center;
-      padding: 4rem 0 6rem;
-      animation: fadeUp 0.9s 0.4s ease both;
-    }
-    .contact h2 {
-      font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: 2rem;
+      font-size: 1.5rem;
       letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
     }
-    .contact p { color: var(--muted); margin-bottom: 1.5rem; }
-    .contact a {
+    .app-note p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 620px;
+    }
+    .app-note p + h2 { margin-top: 2rem; }
+    .app-note a {
       color: var(--accent);
       text-decoration: none;
-      font-size: 1.05rem;
-      font-weight: 500;
       border-bottom: 1px solid var(--accent-border);
-      padding-bottom: 2px;
       transition: border-color 0.2s;
     }
-    .contact a:hover { border-color: var(--accent); }
-    .contact-lines {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: baseline;
-      gap: 0.6rem 1.75rem;
-    }
-    .contact .contact-vanity {
-      margin: 0.9rem 0 0;
-      font-size: 0.78rem;
-      color: var(--faint);
-      letter-spacing: 0.05em;
-    }
-
-    /* NAV LINKS */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .nav-link {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: var(--text); }
+    .app-note a:hover { border-color: var(--accent); }
 
     /* FOOTER */
     footer {
@@ -451,9 +410,9 @@
     }
 
     @media (max-width: 600px) {
-      .hero { padding: 4rem 0 3rem; }
-      .about { padding: 2rem; }
-      .about-meta { gap: 1.2rem; }
+      .app-hero { padding: 3.5rem 0 2.5rem; flex-direction: column; gap: 1.8rem; }
+      .app-icon { width: 96px; height: 96px; border-radius: 21px; }
+      .app-note { padding: 2rem; }
       .nav-link { display: none; }
     }
   </style>
@@ -482,7 +441,7 @@
 
   <nav>
     <div class="container">
-      <a class="logo" href="#">Vibe<span>soft</span></a>
+      <a class="logo" href="index.html">Vibe<span>soft</span></a>
       <div class="nav-links">
         <a class="nav-link" href="about.html">About</a>
         <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
@@ -497,82 +456,58 @@
   <main>
     <div class="container">
 
-      <section class="hero">
-        <div class="hero-eyebrow">Mobile &amp; Web App Development</div>
-        <h1>Apps built with <em>purpose</em> and precision.</h1>
-        <p>Vibesoft LLC designs and develops mobile and web applications that solve real problems — clean, fast, and built to last.</p>
-        <a class="hero-cta" href="mailto:dev@vibesoftllc.com">Start a conversation →</a>
+      <section class="app-hero">
+        <img class="app-icon" src="assets/nag-icon.png" alt="Nag Reminders app icon" width="128" height="128" />
+        <div>
+          <div class="hero-eyebrow">iPhone &middot; iPad &middot; Mac</div>
+          <h1>Nag Reminders. It nags until you <em>actually do it</em>.</h1>
+          <p>Apple Reminders notifies you once — then your task sits there, quietly forgotten. Nag watches your existing reminders and keeps notifying you, every 15 minutes or on your schedule, until the task is done. Complete it in Nag or in Reminders, and the nagging stops.</p>
+          <div class="download-row">
+            <a class="store-badge" href="https://apps.apple.com/us/app/nag-reminders/id6792002234?itscg=30200&amp;itsct=apps_box_badge">
+              <img src="assets/app-store-badge.svg" alt="Download Nag Reminders on the App Store" />
+            </a>
+            <div class="qr-side">
+              <div class="qr-box">
+                <img src="assets/nag-qr.svg" alt="QR code linking to Nag Reminders on the App Store" />
+              </div>
+              <p>On a computer? Point your iPhone camera here.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <hr class="divider" />
 
-      <p class="section-label">What we do</p>
+      <p class="section-label">How it works</p>
       <div class="services">
         <div class="service-card">
-          <div class="service-icon">📱</div>
-          <h3>Mobile App Development</h3>
-          <p>Native and cross-platform apps for iOS and Android, built for performance and usability.</p>
+          <div class="service-icon">🔗</div>
+          <h3>Uses your existing reminders</h3>
+          <p>No new to-do system to adopt. Nag reads the Apple Reminders you already have and writes completions straight back — Siri, shared lists, and everything else keep working.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🌐</div>
-          <h3>Web Applications</h3>
-          <p>Responsive, modern web apps with intuitive interfaces and reliable backends.</p>
+          <div class="service-icon">🔔</div>
+          <h3>Persistent by design</h3>
+          <p>One alert is easy to swipe away. Nag re-notifies on your schedule, escalating for overdue tasks and pacing by priority, until the task is actually complete.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🔧</div>
-          <h3>Software Consulting</h3>
-          <p>Technical strategy and architecture guidance for businesses building digital products.</p>
+          <div class="service-icon">😴</div>
+          <h3>Respectful about it</h3>
+          <p>Quiet hours silence the night. Snooze from the notification when now isn't the time, and cap the number of nags per task so persistence never becomes fatigue.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>Menu bar on the Mac</h3>
+          <p>On macOS, Nag lives in the menu bar with your active reminders one click away — complete or snooze without leaving what you're doing.</p>
         </div>
       </div>
 
-      <p class="section-label">What we've built</p>
-      <div class="services">
-        <div class="service-card">
-          <div class="product-head">
-            <div class="service-icon">🚢</div>
-            <span class="badge badge-flagship">Flagship</span>
-          </div>
-          <h3><a href="https://cruisesort.com">CruiseSort</a></h3>
-          <p>Our flagship product. A cruise comparison platform that brings every major cruise line into one place and ranks sailings on the true total cost — fare plus taxes, fees, port charges and gratuities — with transparent scoring and interactive route maps. <a href="https://cruisesort.com">Visit CruiseSort &rarr;</a></p>
-        </div>
-        <div class="service-card">
-          <div class="product-head">
-            <div class="service-icon">🔔</div>
-            <span class="badge badge-flagship">On the App Store</span>
-          </div>
-          <h3><a href="nag.html">Nag Reminders</a></h3>
-          <p>Persistent reminders for Apple Reminders. Nag keeps notifying you about a task — on your schedule — until you actually complete it. Free on iPhone, iPad, and Mac; one purchase unlocks unlimited nagging. <a href="nag.html">Learn more &rarr;</a></p>
-        </div>
-        <div class="service-card">
-          <div class="product-head">
-            <div class="service-icon">✅</div>
-            <span class="badge badge-soon">In review</span>
-          </div>
-          <h3>MileClaim</h3>
-          <p>A mileage log for anyone who deducts driving. It notices when you start a trip and records it on its own, lets you sort drives into business or personal with a swipe, and works out the IRS deduction for you. No subscription, no account, and no server &mdash; your driving history stays on your iPhone. <a href="privacy-mileclaim.html">Privacy notice &rarr;</a></p>
-        </div>
+      <div class="app-note">
+        <h2>Free to try. One purchase unlocks everything.</h2>
+        <p>Nag is free and nags your top three reminders. A single $4.99 purchase — Nag Unlimited — removes the cap forever, on iPhone, iPad, and Mac together. No subscription, no account.</p>
+        <h2>Private by architecture</h2>
+        <p>Nag makes no network requests at all. Your reminders never leave your device, and there is nothing to sign up for. Read the <a href="privacy-nag.html">Nag privacy notice</a> or the <a href="privacy.html">Vibesoft privacy policy</a>.</p>
       </div>
-
-      <div class="about">
-        <h2>About Vibesoft LLC</h2>
-        <p>Vibesoft LLC is a software company focused on developing thoughtful, well-crafted applications. We work closely with clients to understand their goals and deliver solutions that are both functional and elegant.</p>
-        <div class="about-meta">
-          <div class="meta-item"><strong>Entity</strong>Limited Liability Company</div>
-          <div class="meta-item"><strong>Contact</strong>dev@vibesoftllc.com</div>
-          <div class="meta-item"><strong>Support</strong>dev@vibesoftllc.com</div>
-          <div class="meta-item"><strong>Phone</strong>(352) 352-7447</div>
-        </div>
-      </div>
-
-      <section class="contact">
-        <h2>Let's build something.</h2>
-        <p>Have a project in mind? We'd love to hear about it.</p>
-        <div class="contact-lines">
-          <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a>
-          <a href="tel:+13523527447">(352) 352-7447</a>
-        </div>
-        <p class="contact-vanity">(FLA) FLA-SHIP &nbsp;·&nbsp; App support: dev@vibesoftllc.com</p>
-      </section>
 
     </div>
   </main>
