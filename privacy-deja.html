@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Privacy notice for Deja. Photos are read on your device, nothing is uploaded, and no data is collected." />
+  <title>Privacy — Deja</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Light is the default. The dark palette applies when the visitor's system
+       asks for it, or when the toggle sets data-theme="dark" explicitly.
+       The dark token block is repeated for those two cases -- CSS has no way
+       to share one declaration list between a media query and a selector. */
+    :root {
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --accent: #2563eb;
+      --accent-glow: rgba(37,99,235,0.10);
+      --accent-border: rgba(37,99,235,0.28);
+      --accent-hover: rgba(37,99,235,0.45);
+      --accent-soft: rgba(37,99,235,0.22);
+      --cta-shadow: 0 4px 18px rgba(37,99,235,0.28);
+      --cta-text: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --faint: #64748b;
+      --faint-strong: #475569;
+      --border: rgba(15,23,42,0.10);
+      --grid: rgba(15,23,42,0.04);
+      --grid-opacity: 0.7;
+      --mesh-1: rgba(37,99,235,0.06);
+      --mesh-2: rgba(99,102,241,0.05);
+      --body-weight: 400;
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --accent: #3b82f6;
+        --accent-glow: rgba(59,130,246,0.18);
+        --accent-border: rgba(59,130,246,0.3);
+        --accent-hover: rgba(59,130,246,0.4);
+        --accent-soft: rgba(59,130,246,0.25);
+        --cta-shadow: 0 0 30px rgba(59,130,246,0.3);
+        --cta-text: #ffffff;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --faint: rgba(148,163,184,0.5);
+        --faint-strong: rgba(148,163,184,0.65);
+        --border: rgba(255,255,255,0.07);
+        --grid: rgba(255,255,255,0.07);
+        --grid-opacity: 0.5;
+        --mesh-1: rgba(59,130,246,0.09);
+        --mesh-2: rgba(99,102,241,0.07);
+        --body-weight: 300;
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59,130,246,0.18);
+      --accent-border: rgba(59,130,246,0.3);
+      --accent-hover: rgba(59,130,246,0.4);
+      --accent-soft: rgba(59,130,246,0.25);
+      --cta-shadow: 0 0 30px rgba(59,130,246,0.3);
+      --cta-text: #ffffff;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --faint: rgba(148,163,184,0.5);
+      --faint-strong: rgba(148,163,184,0.65);
+      --border: rgba(255,255,255,0.07);
+      --grid: rgba(255,255,255,0.07);
+      --grid-opacity: 0.5;
+      --mesh-1: rgba(59,130,246,0.09);
+      --mesh-2: rgba(99,102,241,0.07);
+      --body-weight: 300;
+      color-scheme: dark;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: var(--body-weight);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, var(--mesh-1) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, var(--mesh-2) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: var(--grid-opacity);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      position: relative;
+      z-index: 10;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: Georgia, 'Book Antiqua', Palatino, serif;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-contact {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-contact:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* THEME TOGGLE -- hidden until the inline script confirms JS is available,
+       since without JS the theme follows the system and cannot be changed. */
+    .theme-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    [data-js="ready"] .theme-toggle { display: inline-flex; }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle svg { width: 15px; height: 15px; }
+    .theme-toggle .icon-sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    .page-header {
+      padding: 4rem 0 2.5rem;
+      animation: fadeUp 0.7s ease both;
+    }
+    .page-header h1 {
+      font-family: Georgia, 'Book Antiqua', Palatino, serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta { font-size: 0.82rem; color: var(--muted); }
+
+    .prose {
+      padding-bottom: 5rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .prose section {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .prose section:first-child { border-top: none; padding-top: 0; }
+    .prose h2 {
+      font-family: Georgia, 'Book Antiqua', Palatino, serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+    }
+    .prose h3 {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text);
+      margin: 1.25rem 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .prose p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
+    }
+    .prose ul {
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-left: 1.4rem;
+      margin-bottom: 0.85rem;
+      max-width: 680px;
+    }
+    .prose li { margin-bottom: 0.35rem; }
+    .prose a { color: var(--accent); text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+    .prose strong { color: var(--text); font-weight: 500; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      position: relative;
+      z-index: 1;
+    }
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-affiliate {
+      font-size: 0.72rem;
+      color: var(--faint);
+      max-width: 580px;
+      line-height: 1.5;
+    }
+    .footer-affiliate a { color: var(--faint-strong); text-decoration: none; }
+    .footer-affiliate a:hover { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .nav-link { display: none; }
+      footer .container { text-align: center; }
+    }
+  </style>
+  <script>
+    // Runs before first paint so the stored theme does not flash.
+    (function () {
+      var root = document.documentElement;
+      var stored = null;
+      try { stored = localStorage.getItem('vs-theme'); } catch (e) {}
+      var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', stored === 'dark' || stored === 'light' ? stored : system);
+      root.setAttribute('data-js', 'ready');
+
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest && e.target.closest('.theme-toggle');
+        if (!btn) return;
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        try { localStorage.setItem('vs-theme', next); } catch (e) {}
+      });
+    })();
+  </script>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a class="logo" href="index.html">Vibe<span>soft</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="about.html">About</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <a class="nav-contact" href="mailto:dev@vibesoftllc.com">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <div class="page-header">
+        <h1>Deja</h1>
+        <p class="meta">Privacy notice &nbsp;·&nbsp; Effective July 26, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+      </div>
+
+      <div class="prose">
+
+        <section>
+          <p><strong>Deja collects nothing.</strong> That is the whole policy, but here is what it means specifically.</p>
+          <p>Its App Store privacy label reads <strong>Data Not Collected</strong>, in every category. This page is the same policy that ships inside the app, readable there offline.</p>
+        </section>
+
+        <section>
+          <h2>What Deja does with your photos</h2>
+          <p>Deja reads your photo library on your device to work out which pictures are duplicates of each other. It reduces each photo to a small numeric fingerprint &mdash; 64 bits, about the size of this sentence &mdash; and compares those fingerprints to find matches.</p>
+          <p>Your photos are never uploaded, copied off your device, or sent to us or to anyone else. We operate no server for Deja to send anything to.</p>
+        </section>
+
+        <section>
+          <h2>What Deja stores</h2>
+          <p>One file, on your device, containing those fingerprints and the identifiers Photos uses for your pictures. It exists so that scanning again is fast instead of starting from scratch. It contains no images. Deleting the app deletes it.</p>
+        </section>
+
+        <section>
+          <h2>What Deja does not do</h2>
+          <ul>
+            <li>No analytics. No usage statistics, no crash reporting, no telemetry.</li>
+            <li>No account. There is nothing to sign up for and no email is collected.</li>
+            <li>No advertising, and no third-party SDKs of any kind.</li>
+            <li>No tracking, in the App Store's sense or any other.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Network access</h2>
+          <p>Deja makes no network requests. The Mac version ships without permission to open network connections at all, so this is enforced by macOS rather than promised by us.</p>
+          <p>Two things involve the network, and neither is Deja sending your data anywhere:</p>
+          <ul>
+            <li>If you open the side-by-side compare view and a photo is stored in iCloud rather than on your device, Photos fetches it from <strong>your</strong> iCloud account for you to look at. During a scan Deja never does this &mdash; it skips those photos and tells you how many it skipped, rather than using your data allowance without asking.</li>
+            <li>Purchasing the unlock goes through Apple's App Store. Apple handles the payment; we never see your payment details.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Deleting photos</h2>
+          <p>Deja only deletes photos you have selected and confirmed. Deleted photos go to Recently Deleted in Photos, where you can recover them for 30 days.</p>
+        </section>
+
+        <section>
+          <h2>Children</h2>
+          <p>Deja collects no personal information from anyone, of any age. It has no accounts, no chat, no social features, and no data leaves the device.</p>
+        </section>
+
+        <section>
+          <h2>The company policy</h2>
+          <p>This notice covers one application. The company-wide policy, which also covers this website and how to reach us about a privacy question, is at <a href="privacy.html">vibesoftllc.com/privacy</a>.</p>
+          <p>Questions about this app: <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a></p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      </div>
+      <p class="footer-copy">© 2026 Vibesoft LLC. All rights reserved.</p>
+      <p class="footer-affiliate">Some Vibesoft applications may contain affiliate links. We may earn a commission when you click through and make a purchase, at no additional cost to you. <a href="affiliate-disclosure.html">Learn more</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
