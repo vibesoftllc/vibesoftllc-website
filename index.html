@@ -263,12 +263,56 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
       transition: border-color 0.2s, transform 0.2s;
     }
     .service-card:hover { border-color: var(--accent-hover); transform: translateY(-2px); }
     .service-icon {
       font-size: 1.5rem;
       margin-bottom: 1rem;
+    }
+
+    /* Product cards use the real app icon in place of the emoji glyph the
+       service cards use. 256px source, drawn at 56 -- comfortably retina.
+       Apple's icons already carry their own corner radius in the artwork, so
+       the border-radius here is only for the squircle mask on the PNG edge. */
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 13px;
+      display: block;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    /* Official "Download on the App Store" badge, self-hosted per the privacy
+       policy's no-third-party-servers promise. Apple's marketing guidelines
+       set a 40px minimum height; 40 is what we use. Do not restyle it -- the
+       artwork may not be recoloured, cropped or have effects applied. */
+    /* margin-top:auto pushes the badge to the card floor, so badges line up
+       across the row even though the descriptions are different lengths.
+       Requires the card itself to be a flex column. */
+    .store-badge {
+      display: inline-block;
+      margin-top: auto;
+      padding-top: 1rem;
+      align-self: flex-start;
+    }
+    .store-badge img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    /* Apple requires this disclaimer wherever their promotional artwork is
+       used. Kept small and quiet, but present and legible. */
+    .apple-legal {
+      margin-top: 2.5rem;
+      font-size: 0.7rem;
+      line-height: 1.6;
+      color: var(--faint);
+      max-width: 60ch;
     }
     .service-card h3 {
       font-family: Georgia, 'Book Antiqua', Palatino, serif;
@@ -537,23 +581,29 @@
         </div>
         <div class="service-card">
           <div class="product-head">
-            <div class="service-icon">🔔</div>
+            <img class="app-icon" src="assets/nag-icon.png" alt="Nag Reminders app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
           <h3><a href="nag.html">Nag Reminders</a></h3>
           <p>Persistent reminders for Apple Reminders. Nag keeps notifying you about a task — on your schedule — until you actually complete it. Free on iPhone, iPad, and Mac; one purchase unlocks unlimited nagging. <a href="nag.html">Learn more &rarr;</a></p>
+          <a class="store-badge" href="https://apps.apple.com/us/app/nag-reminders/id6792002234?itscg=30200&amp;itsct=apps_box_badge">
+            <img src="assets/app-store-badge.svg" alt="Download Nag Reminders on the App Store" height="40" />
+          </a>
         </div>
         <div class="service-card">
           <div class="product-head">
-            <div class="service-icon">🖼️</div>
+            <img class="app-icon" src="assets/deja-icon.png" alt="Deja app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
           <h3><a href="https://apps.apple.com/us/app/deja-duplicate-photo-finder/id6799176200?itscg=30200&amp;itsct=apps_box_badge">Deja</a></h3>
           <p>Find the photos you took twice. Deja groups exact duplicates, camera bursts and visually similar shots, then shows you what survives before anything is deleted &mdash; and it can never remove every copy of a photo. All the matching happens on your device; your library is never uploaded. iPhone, iPad and Mac. <a href="https://apps.apple.com/us/app/deja-duplicate-photo-finder/id6799176200?itscg=30200&amp;itsct=apps_box_badge">View on the App Store &rarr;</a></p>
+          <a class="store-badge" href="https://apps.apple.com/us/app/deja-duplicate-photo-finder/id6799176200?itscg=30200&amp;itsct=apps_box_badge">
+            <img src="assets/app-store-badge.svg" alt="Download Deja on the App Store" height="40" />
+          </a>
         </div>
         <div class="service-card">
           <div class="product-head">
-            <div class="service-icon">🃏</div>
+            <img class="app-icon" src="assets/fullpay-icon.png" alt="FullPay app icon" width="56" height="56" />
             <span class="badge badge-soon">In review</span>
           </div>
           <h3>FullPay</h3>
@@ -561,7 +611,7 @@
         </div>
         <div class="service-card">
           <div class="product-head">
-            <div class="service-icon">🏠</div>
+            <img class="app-icon" src="assets/deedbox-icon.png" alt="Deedbox app icon" width="56" height="56" />
             <span class="badge badge-soon">In review</span>
           </div>
           <h3>Deedbox</h3>
@@ -569,7 +619,7 @@
         </div>
         <div class="service-card">
           <div class="product-head">
-            <div class="service-icon">📋</div>
+            <img class="app-icon" src="assets/clearbid-icon.png" alt="ClearBid app icon" width="56" height="56" />
             <span class="badge badge-soon">In review</span>
           </div>
           <h3>ClearBid</h3>
@@ -577,7 +627,7 @@
         </div>
         <div class="service-card">
           <div class="product-head">
-            <div class="service-icon">📦</div>
+            <img class="app-icon" src="assets/roombyroom-icon.png" alt="Room by Room app icon" width="56" height="56" />
             <span class="badge badge-soon">Coming soon</span>
           </div>
           <h3>Room by Room</h3>
@@ -585,7 +635,7 @@
         </div>
         <div class="service-card">
           <div class="product-head">
-            <div class="service-icon">✅</div>
+            <img class="app-icon" src="assets/mileclaim-icon.png" alt="MileClaim app icon" width="56" height="56" />
             <span class="badge badge-soon">Coming soon</span>
           </div>
           <h3>MileClaim</h3>
@@ -593,7 +643,8 @@
         </div>
       </div>
 
-      <div class="about">
+            <p class="apple-legal">Apple, the Apple logo and App Store are trademarks of Apple Inc., registered in the U.S. and other countries. Promotional artwork is provided by Apple as an accommodation only; Apple assumes no responsibility for its use and makes no representation regarding its accuracy or performance.</p>
+<div class="about">
         <h2>About Vibesoft LLC</h2>
         <p>Vibesoft LLC is a software company focused on developing thoughtful, well-crafted applications. We work closely with clients to understand their goals and deliver solutions that are both functional and elegant.</p>
         <div class="about-meta">
