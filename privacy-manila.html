@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Privacy Policy for Vibesoft LLC and its applications." />
-  <title>Privacy Policy — Vibesoft LLC</title>
+  <meta name="description" content="Privacy notice for Manila. Your PDFs never leave your Mac: the app has no network access, enforced by macOS, and no data is collected." />
+  <title>Privacy — Manila</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -247,6 +247,24 @@
     .prose a { color: var(--accent); text-decoration: none; }
     .prose a:hover { text-decoration: underline; }
     .prose strong { color: var(--text); font-weight: 500; }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1em 0.35em;
+    }
+    .prose pre {
+      margin: 0 0 1.1rem;
+      padding: 0.85rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .prose pre code { border: none; padding: 0; background: none; font-size: 0.9rem; }
 
     footer {
       border-top: 1px solid var(--border);
@@ -335,109 +353,83 @@
     <div class="container">
 
       <div class="page-header">
-        <h1>Privacy Policy</h1>
-        <p class="meta">Effective August 2, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+        <h1>Manila</h1>
+        <p class="meta">Privacy notice &nbsp;·&nbsp; Effective August 29, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
       </div>
 
       <div class="prose">
 
         <section>
-          <p>Vibesoft LLC ("Vibesoft," "we," "our," or "us") is a limited liability company. This Privacy Policy describes how we collect, use, and protect information when you visit our website at vibesoftllc.com or use any application we publish. By using our website or applications, you agree to the practices described in this policy.</p>
+          <p><strong>Manila collects nothing.</strong> That is the whole policy, but this app handles your documents &mdash; contracts, statements, things you redact and things you sign &mdash; so here is exactly what happens to them.</p>
+          <p>Its App Store privacy label reads <strong>Data Not Collected</strong>, and its privacy manifest declares no collected data and no tracking. This page is the same policy that ships inside the app, under Settings &rarr; Privacy, readable there offline.</p>
         </section>
 
         <section>
-          <h2>Information We Collect</h2>
-
-          <h3>On This Website</h3>
-          <p>This website is a static informational site. We do not operate analytics services, tracking pixels, behavioral advertising networks, or user account systems on this site. We do not collect any personal information through web forms.</p>
-          <p>If you contact us using a "mailto:" link, your email client will open a message addressed to us. Any message you choose to send will transmit your email address and message content to us.</p>
-
-          <h3>In Our Applications</h3>
-          <p><strong>We do not collect your data.</strong> Nothing about you is sent to a Vibesoft server, because we do not operate one. Our applications have no accounts, no analytics, no crash reporting, and no advertising identifiers.</p>
-          <p>The only circumstance in which any information leaves your device is when a feature you are using cannot work without it &mdash; a weather feature needs a location in order to return a forecast for it. In those cases we send only the minimum that feature requires, only to the party providing that function, only for as long as the request takes, and anonymised wherever anonymising it still lets the feature work.</p>
-          <p>Where an app offers such a feature, it is described at the point you switch it on, in that app&rsquo;s own privacy notice, and on its App Store listing. Features of this kind are off until you enable them, unless enabling them discloses nothing about you at all &mdash; for example, an app asking a government website for a published tax figure sends nothing about anyone, so there is nothing to consent to.</p>
-          <p>Some of our applications can store a copy of your own data in your own iCloud account, at your instruction. That is your storage and your Apple Account. It is not collection, and we have no access to it.</p>
+          <h2>No network access</h2>
+          <p>Manila cannot reach the network. The app runs inside the macOS App Sandbox without the network entitlement &mdash; neither <code>com.apple.security.network.client</code> nor <code>com.apple.security.network.server</code> &mdash; so the operating system refuses any outbound connection. This is enforced by macOS rather than promised by us, and anyone can verify it:</p>
+          <pre><code>codesign -d --entitlements - /Applications/Manila.app</code></pre>
+          <p>The only apparent exceptions open other apps, not a connection from Manila: clicking the support address opens your own email client, and the in-app purchase is handled by the App Store app on your Mac.</p>
         </section>
 
         <section>
-          <h2>Privacy Notices for Individual Apps</h2>
-          <p>Each application has its own notice describing exactly what it does. Where an app sends anything anywhere, its notice names the recipient, what is sent, and whether the feature is on or off when you install it.</p>
+          <h2>How Manila works</h2>
+          <p>Every tool &mdash; merge, split, organize, compress, extract, images to PDF, redact, sign and verify &mdash; runs entirely on your Mac using Apple&rsquo;s PDFKit. You choose which files Manila may read through the standard Open panel, and where results are written through the standard Save panel. Manila never sees any file you did not choose.</p>
           <ul>
-            <li><a href="privacy-nag.html">Nag Reminders</a> &mdash; makes no network requests at all</li>
-            <li><a href="privacy-fullpay.html">FullPay: Video Poker Trainer</a> &mdash; makes no network requests at all</li>
-            <li><a href="privacy-manila.html">Manila</a> &mdash; makes no network requests at all; the Mac app has no network entitlement</li>
-            <li><a href="privacy-mileclaim.html">MileClaim</a> &mdash; three named exceptions, described individually</li>
+            <li><strong>The PDFs and images you open</strong> stay wherever you keep them. Manila reads them in place and never copies them elsewhere.</li>
+            <li><strong>Results</strong> &mdash; merged, split, redacted and signed PDFs, extracted text and images &mdash; go wherever you save them.</li>
+            <li><strong>Your drawn or typed signature</strong> is kept as <code>signature.png</code> in the app&rsquo;s container under Application Support, on this Mac only and never in iCloud. Delete the file, or replace the signature in the app, to remove it.</li>
+            <li><strong>The signing key for tamper-evident receipts</strong> lives in the Secure Enclave on Macs that have one, otherwise in a key file in the same app container.</li>
+            <li><strong>Operation history</strong> &mdash; which tool ran on which file name, when, and a hash of the output &mdash; is a <code>history.jsonl</code> file in the app container, on this Mac only. File &rarr; Export Operation History&hellip; lets you read it; deleting the container removes it.</li>
+            <li><strong>The signer name you type</strong> for a signing certificate is stored in the app&rsquo;s own preferences, in the app container.</li>
+          </ul>
+          <p>Nothing in that list is transmitted anywhere. Manila&rsquo;s app container is not synced to iCloud.</p>
+        </section>
+
+        <section>
+          <h2>Signing receipts</h2>
+          <p>When you turn on the audit trail for the Sign tool, Manila writes a <code>.manila-receipt.json</code> file next to your signed PDF. It contains the name you typed, the local date and time from your Mac&rsquo;s clock, the document&rsquo;s filename, hashes of the file before and after signing, and a signature made with a key that lives on your Mac. The receipt is a file you own; it goes only where you put it. It proves the file has not changed since signing &mdash; it is not an identity credential and no certificate authority is involved.</p>
+        </section>
+
+        <section>
+          <h2>What Manila does not do</h2>
+          <ul>
+            <li>No analytics. No usage statistics, no crash reporting, no telemetry.</li>
+            <li>No account, no sign-in, no email.</li>
+            <li>No advertising, and no third-party SDKs of any kind. No third-party service, font or library that communicates with a server is included.</li>
+            <li>No tracking, in the App Store&rsquo;s sense or any other.</li>
+            <li>No subscription, so there is no billing relationship and no renewal to lapse.</li>
           </ul>
         </section>
 
         <section>
-          <h2>Third-Party Services</h2>
-          <p>This website does not load content from third-party servers. All assets are served directly from vibesoftllc.com; no data is transmitted to any external party as a result of visiting this site.</p>
-          <p>Our applications do not integrate analytics, crash reporting, or advertising networks. Where an application uses a third party to perform a function you have asked for &mdash; a mapping provider to draw a map, a geocoder to turn a coordinate into a street address &mdash; only what that function requires is sent, and only when you use it. Those uses are named individually in the relevant app&rsquo;s privacy notice, and that provider&rsquo;s own privacy policy governs what they do with the request.</p>
+          <h2>Purchases</h2>
+          <p>Manila is free to try and unlocked by a single one-time in-app purchase. The purchase is processed entirely by Apple through the App Store. Vibesoft LLC receives no personal information from it; Apple&rsquo;s own privacy policy governs your Apple Account and payment details.</p>
         </section>
 
         <section>
-          <h2>Cookies and Tracking Technologies</h2>
-          <p>This website does not set cookies or use tracking technologies of any kind.</p>
-          <p>Our applications use no tracking technologies either. They store your own settings and content on your device, using the operating system's ordinary local storage &mdash; that data stays on the device and is not transmitted to us. Nothing in our applications profiles you, follows you between apps, or builds a record of your behaviour.</p>
-        </section>
-
-        <section>
-          <h2>How We Use Your Information</h2>
-          <p>Information received through email contact on this website is used solely to respond to your inquiry, and for no other purpose.</p>
-          <p>We receive no information from our applications, so there is none for us to use. What an application stores stays on your device and is used only to provide the feature you are using it for &mdash; a mileage log calculates your deduction, a trainer scores your play. None of it is measured, reported, or aggregated by us.</p>
-          <p>We do not sell your personal information. We have never had any to sell.</p>
-        </section>
-
-        <section>
-          <h2>Information Sharing</h2>
-          <p>We do not sell, rent, or share your personal information. The reason is structural rather than a promise about our conduct: your data is on your device and not on any server of ours, so there is nothing for us to share, nothing for us to lose in a breach, and nothing we could be compelled to produce.</p>
-          <p>The one exception is email you send us directly. If we were required by law, regulation, court order, or valid legal process to produce correspondence, we would have that correspondence. We would not have anything from inside an application, because we never received it.</p>
-          <p>If Vibesoft were ever acquired or its assets sold, the successor would be bound by this policy. There would still be no user data to transfer.</p>
-        </section>
-
-        <section>
-          <h2>Data Retention</h2>
-          <p>Email correspondence is retained for as long as needed to address your inquiry and as required by applicable law.</p>
-          <p>We hold no data from our applications, so there is no retention period to describe. Data an application stores on your device is kept until you delete it or remove the app, and each app's notice explains how to erase it.</p>
-        </section>
-
-        <section>
-          <h2>Children's Privacy</h2>
-          <p>Our website and applications are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us at <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a> and we will promptly delete it.</p>
-        </section>
-
-        <section>
-          <h2>Your Privacy Rights</h2>
-          <p><strong>All users</strong> may contact us to ask what information we hold, request correction or deletion, or raise any privacy concern.</p>
-          <p><strong>California residents</strong> have the following rights under the California Consumer Privacy Act (CCPA):</p>
-          <ul>
-            <li>The right to know what personal information is collected about you</li>
-            <li>The right to delete personal information we hold</li>
-            <li>The right to opt out of the sale of personal information (we do not sell personal information)</li>
-            <li>The right to non-discrimination for exercising these rights</li>
-          </ul>
-          <p>To exercise any of these rights, contact us at <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a>. We will respond to verifiable requests within 45 days.</p>
+          <h2>Your rights</h2>
+          <p>Because Manila holds no data about you, there is nothing for us to access, correct, export or delete. Everything the app produces is in files on your Mac under your control. We cannot access your data even if you ask us to &mdash; it is not stored anywhere we can reach.</p>
         </section>
 
         <section>
           <h2>Security</h2>
-          <p>We implement reasonable technical and organizational measures to protect the information we hold. No method of transmission over the internet or electronic storage is completely secure, however, and we cannot guarantee absolute security.</p>
+          <p>Your documents never leave your Mac, so the security of your files is the security of your Mac: FileVault, your login password, and your backups.</p>
         </section>
 
         <section>
-          <h2>Changes to This Policy</h2>
-          <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Effective" date at the top of this page. Continued use of our website or applications after changes are posted constitutes your acceptance of the updated policy.</p>
+          <h2>Children</h2>
+          <p>Manila is a general-purpose utility and collects no personal information from anyone, of any age. It has no accounts, no chat, no social features, and no data leaves your Mac.</p>
         </section>
 
         <section>
-          <h2>Contact Us</h2>
-          <p>If you have questions or concerns about this Privacy Policy, please reach out:</p>
-          <p>
-            <strong>Vibesoft LLC</strong><br />
-            <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a><br />
-            <a href="tel:+13523527447">(352) 352-7447</a> &nbsp;·&nbsp; (FLA) FLA-SHIP
-          </p>
+          <h2>Changes to this policy</h2>
+          <p>If Manila&rsquo;s behaviour ever changes in a way that affects this policy, the policy will be updated in the app and on this page, with a new effective date, before that version ships.</p>
+        </section>
+
+        <section>
+          <h2>The company policy</h2>
+          <p>This notice covers one application. The company-wide policy, which also covers this website and how to reach us about a privacy question, is at <a href="privacy.html">vibesoftllc.com/privacy</a>.</p>
+          <p>Questions about this app: <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a></p>
         </section>
 
       </div>
