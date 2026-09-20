@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Privacy notice for Nag Reminders. The app makes no network requests and collects no data." />
-  <title>Privacy — Nag Reminders</title>
+  <meta name="description" content="Privacy notice for Nag. The app collects no data, has no server, and keeps your reminders, nags and location on your device." />
+  <title>Privacy — Nag</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -340,42 +340,52 @@
     <div class="container">
 
       <div class="page-header">
-        <h1>Nag Reminders</h1>
-        <p class="meta">Privacy notice &nbsp;·&nbsp; Effective August 2, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+        <h1>Nag</h1>
+        <p class="meta">Privacy notice &nbsp;·&nbsp; Updated September 19, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
       </div>
 
       <div class="prose">
 
         <section>
-          <p><strong>Nag makes no network requests at all.</strong> It has no server to talk to, no account, and no analytics. It works with the device in airplane mode, permanently, because it never needed a connection in the first place.</p>
+          <p><strong>Nag collects no data and has no server of ours.</strong> No account, no analytics, no advertising, no tracking. Your reminders, the nags you create, and your location stay on your device.</p>
           <p>Its App Store privacy label reads <strong>Data Not Collected</strong>, in every category.</p>
         </section>
 
         <section>
           <h2>What Nag does</h2>
-          <p>Nag reads the reminders already on your device through EventKit, Apple's local framework, and re-notifies you about overdue ones until you mark them done. Everything &mdash; reading the list, deciding what is overdue, scheduling the alert, displaying it &mdash; happens on your device.</p>
-          <p>The notifications are local notifications, generated and delivered by your own device. There are no push notifications, because a push notification would require a server, and there is no server.</p>
+          <p>Nag re-notifies you about things you have not done until you mark them done. It works two ways, and you can use either or both: it can watch the reminders already on your device through EventKit, Apple&rsquo;s local framework, and you can create nags inside Nag itself.</p>
+          <p>Everything &mdash; reading the list, deciding what is overdue, scheduling the alert, displaying it &mdash; happens on your device. The notifications are local notifications, generated and delivered by your own device. There are no push notifications, because a push notification would require a server, and there is no server.</p>
+        </section>
+
+        <section>
+          <h2>The one thing that uses the network</h2>
+          <p>On iPhone, a nag can be tied to a place, so it starts nagging when you arrive somewhere or leave it. When you search for that place, what you type and the approximate area being searched are sent to <strong>Apple Maps</strong> to find matches, and the map you see is loaded from Apple. That is Apple&rsquo;s service, under Apple&rsquo;s privacy policy, and none of it reaches us.</p>
+          <p>That is the only network traffic in the app, and only while you are searching for a place. Everything else works offline, permanently. Two things that look like exceptions are not: tapping the support link opens your own email client, and the &ldquo;More from Vibesoft&rdquo; list hands a link to the App Store or your browser. In both cases the app itself sends nothing.</p>
         </section>
 
         <section>
           <h2>Where your information lives</h2>
           <ul>
-            <li><strong>Your reminders</strong> stay in Apple's Reminders app, where they already were. Nag reads and updates them in place. If you have iCloud enabled for Reminders, Apple syncs them as it always has &mdash; that is Apple's service and your Apple Account, not ours.</li>
+            <li><strong>Your reminders</strong> stay in Apple&rsquo;s Reminders app, where they already were. Nag reads and updates them in place. If you have iCloud enabled for Reminders, Apple syncs them as it always has &mdash; that is Apple&rsquo;s service and your Apple Account, not ours.</li>
+            <li><strong>Nags you create in Nag</strong> are stored in a file in Nag&rsquo;s own storage on the device. They are never uploaded, never written into Apple Reminders, and do not sync between your iPhone, iPad and Mac. Deleting the app deletes them, so Nag can hand them to you as a file whenever you want &mdash; Export My Nags, which is not behind the purchase.</li>
+            <li><strong>Places attached to nags</strong> are stored with the nag, on the device.</li>
             <li><strong>Your settings</strong> (schedule, quiet hours, which lists to watch, notification sound) are stored in local storage on the device.</li>
-            <li><strong>Nagging history</strong> exists only in memory while the app is running and is not written to disk at all.</li>
+            <li><strong>Nagging history</strong> is a count of alerts already sent, kept on the device so limits survive a restart.</li>
           </ul>
-          <p>None of it is transmitted anywhere. We could not retrieve it if you asked us to.</p>
+          <p>None of it is transmitted to us. We could not retrieve it if you asked us to.</p>
         </section>
 
         <section>
           <h2>Permissions</h2>
-          <h3>Reminders &mdash; required</h3>
-          <p>Read and write access, so Nag can see which reminders are outstanding and mark one complete when you tap done. This is the entire function of the app. The data goes from EventKit to the screen and nowhere else.</p>
+          <h3>Reminders &mdash; optional</h3>
+          <p>Read and write access, so Nag can see which reminders are outstanding and mark one complete when you tap done. Access is optional: without it, or with Apple Reminders switched off in Nag&rsquo;s settings, Nag works with its own nags alone. The data goes from EventKit to the screen and nowhere else.</p>
           <h3>Notifications &mdash; required</h3>
           <p>So the app can alert you. Local only.</p>
+          <h3>Location &mdash; optional, iPhone only</h3>
+          <p>Only if you attach a place to a nag. Nag asks iOS to watch that place and tell it when you arrive or leave, which is why iOS asks for &ldquo;Always&rdquo;: the moment that matters usually happens while Nag is closed. Nag does not follow your route, keeps no history of where you have been, and never sends your location to us. Without location access, nags tied to a place simply wait. The Mac version has no location features at all.</p>
           <h3>Background refresh &mdash; iOS</h3>
           <p>So Nag can check for overdue reminders while it is closed. The check runs on your device and uses no network.</p>
-          <p>Nag does <strong>not</strong> request location, contacts, camera, microphone, or photo access, and does not access HealthKit.</p>
+          <p>Nag does <strong>not</strong> request contacts, camera, microphone, or photo access, and does not access HealthKit.</p>
         </section>
 
         <section>
@@ -386,17 +396,17 @@
 
         <section>
           <h2>Analytics, tracking, and advertising</h2>
-          <p>There are none. Nag contains no analytics framework, no crash reporter, no advertising identifier, and no third-party SDK of any kind. Nothing you do in the app is measured or reported, to us or to anyone.</p>
+          <p>There are none. Nag contains no analytics framework, no crash reporter, no advertising identifier, and no third-party SDK of any kind. Nothing you do in the app is measured or reported, to us or to anyone. Apple Maps place search, described above, is Apple&rsquo;s own framework rather than a third-party SDK, and it runs only while you are searching.</p>
         </section>
 
         <section>
           <h2>Deleting your data</h2>
-          <p>Deleting the app removes its settings from your device. Your reminders are unaffected &mdash; they belong to Apple's Reminders app and remain exactly as they were. There is nothing for us to delete on our end, because we never had anything.</p>
+          <p>Deleting the app removes its settings and the nags you created in Nag from your device. Your Apple Reminders are unaffected &mdash; they belong to Apple&rsquo;s Reminders app and remain exactly as they were. There is nothing for us to delete on our end, because we never had anything.</p>
         </section>
 
         <section>
           <h2>Children</h2>
-          <p>Nag collects no personal information from anyone, of any age. It has no accounts, no chat, no social features, and no external links.</p>
+          <p>Nag collects no personal information from anyone, of any age. It has no accounts, no chat and no social features. It does contain links that leave the app: the support email, the Reminders app, and the &ldquo;More from Vibesoft&rdquo; list, which opens the App Store or a browser.</p>
         </section>
 
         <section>
