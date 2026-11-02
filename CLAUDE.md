@@ -39,6 +39,13 @@ Links to `cruisesort.com` are deliberate SEO backlinks — keep them as plain fo
 
 Nag went live 2026-08-05: its card links to `nag.html` (which carries the store link), badge `.badge-flagship` with the text "On the App Store". New product pages should copy `nag.html`'s pattern: badge + QR download row, campaign-tokened store links, Smart App Banner, self-hosted assets.
 
+Every page's footer carries a **More from Vibesoft** list: every live app as a
+link (a per-app privacy page omits its own app), then apps not yet released as
+plain text — `<li class="soon">Name &mdash; tagline (coming soon)</li>`, styled
+by `.footer-more .soon`, never a link, since an unreleased store page reads "not
+available". When an app goes live, turn its `soon` item into a link on every
+page and swap its home-page badge, in the same commit.
+
 ## Theming
 
 The site is **light by default** and supports dark mode three ways, in priority order:
