@@ -172,6 +172,6 @@ Two addresses, both landing on the `@vibesoftllc.com` catchall:
 
 - `admin@vibesoftllc.com` — business, press, partnership. Used by the nav "Get in touch" button and the legal-page contact blocks.
 - `dev@vibesoftllc.com` — app support, bug reports, feature requests. Used by the `#support` block on `about.html`.
-- Phone `(352) 352-7447`, shown alongside the vanity spelling `FLA-SHIP` (the `(FLA)` prefix was dropped site-wide 2026-11-21 — it was quietly contradicting the jurisdiction-agnostic rule above on every page that showed it). Always link it as `tel:+13523527447` — the vanity string is display-only.
+- Phone `(352) 352-7447`. Always link it as `tel:+13523527447`. The vanity spelling `FLA-SHIP` (a mnemonic for the digits 352-7447, not literally "Florida" — but it still spells out "FLA") was dropped site-wide first as just its `(FLA)` prefix on 2026-11-21, then entirely on a later pass the same day once the operator pointed out it was still there in several places — removing the prefix wasn't enough; the vanity string itself named the jurisdiction. Don't reintroduce a phone vanity spelling that contains a state abbreviation.
 
 `about.html#support` is the **Apple App Store Support URL**. App Review Guideline 1.5 requires that page to give users a working way to make contact, so the email and phone in `.contact-methods` must stay visible and correct there. Don't reduce it to a form or a bare address.
