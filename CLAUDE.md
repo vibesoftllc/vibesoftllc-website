@@ -99,6 +99,15 @@ Also on `more.html` specifically: Dogged and Ship O'Clock were moved from the "C
 
 **Not yet extended**: the three legal pages (`privacy.html`, `terms.html`, `affiliate-disclosure.html`) and `content-owners.html` deliberately weren't touched beyond the shared token change — legal text fading in on scroll is bad UX for content that should read as immediately stable, and none of those pages have cards or emoji icons to begin with. If a future pass wants *any* motion on those pages, keep it off the `.prose` content itself.
 
+### Fixed the same day: cards that looked clickable but weren't
+
+The lift + shadow hover (above) was originally applied to every `.service-card`/`.app-card`, including ones with no link at all — the three "What We Do" cards on `index.html`/`about.html`, and all four "How it works" cards on `nag.html`. The operator caught this: hovering anywhere on those made the card look like a button, but only the text links inside it actually went anywhere. The fix, in two parts:
+
+- On `index.html`, every product card that genuinely has one real destination (an app's store page, or a pre-release app's privacy notice) is now the `<a>` itself — `<a class="service-card reveal" href="…">` wrapping the whole card — with the redundant inner links (the `<h3>` link, the inline "View on the App Store"/"Learn more" link, and the store badge's own `<a>` wrapper) removed rather than left as dead weight alongside a now-duplicate outer link. The store badge image lost its wrapping anchor and just carries the `store-badge` class directly; `.store-badge`'s CSS moved from styling an `<a>` + nested `img` to styling the `img` alone.
+- The hover rule split in two: the base `.service-card`/`.app-card:hover` (or `.app-card.soon:hover`, which `more.html` already had) gives a plain `<div>` only a faint border tint, while `a.service-card:hover` (or plain `.app-card:hover`, since `more.html`'s live cards are already always `<a>`) gets the lift and glow. `nag.html` and `about.html` have no linked cards at all, so they keep only the bare, un-split rule — a subtle tint, nothing more.
+
+The rule going forward: a card only gets the lift-and-glow hover if it is (or is wrapped by) the single link it represents. A descriptive card with no destination gets, at most, a faint border change — never anything that reads as a button.
+
 Use this entry as the reference for the pattern rather than re-deriving it, on `content-owners.html` or anywhere else that later gets its own icons/cards.
 
 Fonts are **system stacks, not webfonts** — Google Fonts was deliberately removed (commit `61d4fe1`) so pages have zero external requests. Headings use `Georgia, 'Book Antiqua', Palatino, serif`; body uses `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif` at `font-weight: 300`. Don't reintroduce a font CDN.

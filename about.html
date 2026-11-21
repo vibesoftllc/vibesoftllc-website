@@ -294,11 +294,11 @@
       padding: 1.8rem;
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .service-card:hover {
-      border-color: rgba(var(--tint), 0.45);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px -10px rgba(var(--tint), 0.35);
-    }
+    /* These cards are plain divs -- "What We Do" links nowhere -- so hover
+       only gets a subtle border tint, never the lift+shadow a button would
+       get. See index.html for the a.service-card split this page doesn't
+       need, since nothing here is ever a link. */
+    .service-card:hover { border-color: rgba(var(--tint), 0.3); }
     .reveal { transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
     [data-js="ready"] .reveal { opacity: 0; transform: translateY(22px) scale(0.98); }
     [data-js="ready"] .reveal.in-view { opacity: 1; transform: none; }

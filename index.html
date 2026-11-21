@@ -300,7 +300,16 @@
       flex-direction: column;
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .service-card:hover {
+    /* A div (nothing to click -- e.g. the "What We Do" cards) only ever gets
+       this subtle hover. The lift + shadow below is reserved for a.service-card,
+       i.e. a card that IS the link, so hovering never implies clickability
+       the card doesn't have. */
+    .service-card:hover { border-color: rgba(var(--tint), 0.3); }
+    a.service-card {
+      text-decoration: none;
+      color: inherit;
+    }
+    a.service-card:hover {
       border-color: rgba(var(--tint), 0.45);
       transform: translateY(-3px);
       box-shadow: 0 10px 28px -10px rgba(var(--tint), 0.35);
@@ -344,12 +353,9 @@
        across the row even though the descriptions are different lengths.
        Requires the card itself to be a flex column. */
     .store-badge {
-      display: inline-block;
       margin-top: auto;
       padding-top: 1rem;
       align-self: flex-start;
-    }
-    .store-badge img {
       height: 40px;
       width: auto;
       display: block;
@@ -621,162 +627,138 @@
 
       <p class="section-label">What we've built</p>
       <div class="services">
-        <div class="service-card reveal" style="--tint:78,129,239">
+        <a class="service-card reveal" style="--tint:78,129,239" href="https://cruisesort.com">
           <div class="product-head">
             <div class="service-icon">🚢</div>
             <span class="badge badge-flagship">Flagship</span>
           </div>
-          <h3><a href="https://cruisesort.com">CruiseSort</a></h3>
-          <p>Our flagship product. A cruise comparison platform that brings every major cruise line into one place and ranks sailings on the true total cost — fare plus taxes, fees, port charges and gratuities — with transparent scoring and interactive route maps. <a href="https://cruisesort.com">Visit CruiseSort &rarr;</a></p>
-        </div>
-        <div class="service-card reveal" style="--tint:241,118,108">
+          <h3>CruiseSort</h3>
+          <p>Our flagship product. A cruise comparison platform that brings every major cruise line into one place and ranks sailings on the true total cost — fare plus taxes, fees, port charges and gratuities — with transparent scoring and interactive route maps. Visit CruiseSort &rarr;</p>
+        </a>
+        <a class="service-card reveal" style="--tint:241,118,108" href="nag.html">
           <div class="product-head">
             <img class="app-icon" src="assets/nag-icon.png" alt="Nag Reminders app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="nag.html">Nag Reminders</a></h3>
-          <p>Persistent reminders for Apple Reminders. Nag keeps notifying you about a task — on your schedule — until you actually complete it. Free on iPhone, iPad, and Mac; one purchase unlocks unlimited nagging. <a href="nag.html">Learn more &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/nag-reminders/id6792002234?itscg=30200&amp;itsct=apps_box_badge">
-            <img src="assets/app-store-badge.svg" alt="Download Nag Reminders on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:128,92,170">
+          <h3>Nag Reminders</h3>
+          <p>Persistent reminders for Apple Reminders. Nag keeps notifying you about a task — on your schedule — until you actually complete it. Free on iPhone, iPad, and Mac; one purchase unlocks unlimited nagging. Learn more &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Nag Reminders on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:128,92,170" href="https://apps.apple.com/us/app/deja-duplicate-photo-finder/id6799176200?itscg=30200&amp;itsct=apps_box_badge">
           <div class="product-head">
             <img class="app-icon" src="assets/deja-icon.png" alt="Deja app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/deja-duplicate-photo-finder/id6799176200?itscg=30200&amp;itsct=apps_box_badge">Deja</a></h3>
-          <p>Find the photos you took twice. Deja groups exact duplicates, camera bursts and visually similar shots, then shows you what survives before anything is deleted &mdash; and it can never remove every copy of a photo. All the matching happens on your device; your library is never uploaded. iPhone, iPad and Mac. <a href="https://apps.apple.com/us/app/deja-duplicate-photo-finder/id6799176200?itscg=30200&amp;itsct=apps_box_badge">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/deja-duplicate-photo-finder/id6799176200?itscg=30200&amp;itsct=apps_box_badge">
-            <img src="assets/app-store-badge.svg" alt="Download Deja on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:19,93,65">
+          <h3>Deja</h3>
+          <p>Find the photos you took twice. Deja groups exact duplicates, camera bursts and visually similar shots, then shows you what survives before anything is deleted &mdash; and it can never remove every copy of a photo. All the matching happens on your device; your library is never uploaded. iPhone, iPad and Mac. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Deja on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:19,93,65" href="https://apps.apple.com/us/app/fullpay-video-poker-trainer/id6792873151?itscg=30200&amp;itsct=apps_box_badge">
           <div class="product-head">
             <img class="app-icon" src="assets/fullpay-icon.png" alt="FullPay app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/fullpay-video-poker-trainer/id6792873151?itscg=30200&amp;itsct=apps_box_badge">FullPay</a></h3>
-          <p>A video poker trainer built on an exact-EV engine: for every hand it enumerates every possible draw and computes the mathematically optimal hold for the paytable you are playing. Jacks or Better and the full trainer are free forever; one purchase adds twelve more games plus Blackjack and Keno. Play credits only &mdash; no wagering, no real money. <a href="https://apps.apple.com/us/app/fullpay-video-poker-trainer/id6792873151?itscg=30200&amp;itsct=apps_box_badge">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/fullpay-video-poker-trainer/id6792873151?itscg=30200&amp;itsct=apps_box_badge">
-            <img src="assets/app-store-badge.svg" alt="Download FullPay on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:43,116,90">
+          <h3>FullPay</h3>
+          <p>A video poker trainer built on an exact-EV engine: for every hand it enumerates every possible draw and computes the mathematically optimal hold for the paytable you are playing. Jacks or Better and the full trainer are free forever; one purchase adds twelve more games plus Blackjack and Keno. Play credits only &mdash; no wagering, no real money. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download FullPay on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:43,116,90" href="https://apps.apple.com/us/app/deedbox-rental-property-tax/id6801331272">
           <div class="product-head">
             <img class="app-icon" src="assets/deedbox-icon.png" alt="Deedbox app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/deedbox-rental-property-tax/id6801331272">Deedbox</a></h3>
-          <p>Rental records that outlast the software that keeps them. A ledger for small landlords: rent received and expenses by property, organised into the shape of IRS Schedule E, with a year-end CSV export. The IRS audit window outlives most subscriptions &mdash; so your records live on your device and in your own iCloud, never on our server. <a href="https://apps.apple.com/us/app/deedbox-rental-property-tax/id6801331272">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/deedbox-rental-property-tax/id6801331272">
-            <img src="assets/app-store-badge.svg" alt="Download Deedbox on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:41,65,84">
+          <h3>Deedbox</h3>
+          <p>Rental records that outlast the software that keeps them. A ledger for small landlords: rent received and expenses by property, organised into the shape of IRS Schedule E, with a year-end CSV export. The IRS audit window outlives most subscriptions &mdash; so your records live on your device and in your own iCloud, never on our server. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Deedbox on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:41,65,84" href="https://apps.apple.com/us/app/clearbid-contractor-quotes/id6799534619">
           <div class="product-head">
             <img class="app-icon" src="assets/clearbid-icon.png" alt="ClearBid app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/clearbid-contractor-quotes/id6799534619">ClearBid</a></h3>
-          <p>Estimates and quotes for contractors and trades. Price the job in the driveway, generate a branded PDF on the phone, and send it from the share sheet before you drive off. Works with no signal on site, because the job quote should not wait for a bar of reception. <a href="https://apps.apple.com/us/app/clearbid-contractor-quotes/id6799534619">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/clearbid-contractor-quotes/id6799534619">
-            <img src="assets/app-store-badge.svg" alt="Download ClearBid on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:68,69,106">
+          <h3>ClearBid</h3>
+          <p>Estimates and quotes for contractors and trades. Price the job in the driveway, generate a branded PDF on the phone, and send it from the share sheet before you drive off. Works with no signal on site, because the job quote should not wait for a bar of reception. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download ClearBid on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:68,69,106" href="https://apps.apple.com/us/app/room-by-room-home-inventory/id6801625722">
           <div class="product-head">
             <img class="app-icon" src="assets/roombyroom-icon.png" alt="Room by Room app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/room-by-room-home-inventory/id6801625722">Room by Room</a></h3>
-          <p>Photograph what you own, before you need the list. A household inventory for insurance: photographs, purchase prices, replacement estimates, serial numbers and receipts, organised room by room. A list whose whole job is to still exist on the worst day of your life &mdash; so it is stored on your device, not on a service that can shut down. <a href="https://apps.apple.com/us/app/room-by-room-home-inventory/id6801625722">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/room-by-room-home-inventory/id6801625722">
-            <img src="assets/app-store-badge.svg" alt="Download Room by Room on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:68,143,100">
+          <h3>Room by Room</h3>
+          <p>Photograph what you own, before you need the list. A household inventory for insurance: photographs, purchase prices, replacement estimates, serial numbers and receipts, organised room by room. A list whose whole job is to still exist on the worst day of your life &mdash; so it is stored on your device, not on a service that can shut down. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Room by Room on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:68,143,100" href="https://apps.apple.com/us/app/mileclaim/id6798314526">
           <div class="product-head">
             <img class="app-icon" src="assets/mileclaim-icon.png" alt="MileClaim app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/mileclaim/id6798314526">MileClaim</a></h3>
-          <p>A mileage log for anyone who deducts driving. It notices when you start a trip and records it on its own, lets you sort drives into business or personal with a swipe, and works out the IRS deduction for you. No subscription, no account, and no server &mdash; we never see your drives. <a href="https://apps.apple.com/us/app/mileclaim/id6798314526">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/mileclaim/id6798314526">
-            <img src="assets/app-store-badge.svg" alt="Download MileClaim on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:168,85,247">
+          <h3>MileClaim</h3>
+          <p>A mileage log for anyone who deducts driving. It notices when you start a trip and records it on its own, lets you sort drives into business or personal with a swipe, and works out the IRS deduction for you. No subscription, no account, and no server &mdash; we never see your drives. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download MileClaim on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:168,85,247" href="https://apps.apple.com/us/app/dotmates/id6806671681">
           <div class="product-head">
             <img class="app-icon" src="assets/dotmates-icon.png" alt="Dotmates app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/dotmates/id6806671681">Dotmates</a></h3>
-          <p>A calm logic puzzle. Drag dots together: same-colored dots that touch bind into a cluster and move as one &mdash; but the moment a cluster forms, that color&rsquo;s loose dots freeze, so the order you bind them in is the puzzle. 150 levels, each verified solvable, with par proven by exhaustive search. No timers, no ads, and nothing collected. <a href="https://apps.apple.com/us/app/dotmates/id6806671681">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/dotmates/id6806671681">
-            <img src="assets/app-store-badge.svg" alt="Download Dotmates on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:58,105,200">
+          <h3>Dotmates</h3>
+          <p>A calm logic puzzle. Drag dots together: same-colored dots that touch bind into a cluster and move as one &mdash; but the moment a cluster forms, that color&rsquo;s loose dots freeze, so the order you bind them in is the puzzle. 150 levels, each verified solvable, with par proven by exhaustive search. No timers, no ads, and nothing collected. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Dotmates on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:58,105,200" href="https://apps.apple.com/us/app/manila-offline-pdf-editor/id6806659685">
           <div class="product-head">
             <img class="app-icon" src="assets/manila-icon.png" alt="Manila app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/manila-offline-pdf-editor/id6806659685">Manila</a></h3>
-          <p>Your PDFs never leave your Mac. Merge, split, organize, compress, redact and sign PDFs entirely on your Mac, inside the App Sandbox with no network access at all &mdash; so a bank statement or a lease is never uploaded to somebody&rsquo;s &ldquo;free PDF tool&rdquo;. A one-time purchase, not a subscription. <a href="https://apps.apple.com/us/app/manila-offline-pdf-editor/id6806659685">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/manila-offline-pdf-editor/id6806659685">
-            <img src="assets/app-store-badge.svg" alt="Download Manila on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:29,158,121">
+          <h3>Manila</h3>
+          <p>Your PDFs never leave your Mac. Merge, split, organize, compress, redact and sign PDFs entirely on your Mac, inside the App Sandbox with no network access at all &mdash; so a bank statement or a lease is never uploaded to somebody&rsquo;s &ldquo;free PDF tool&rdquo;. A one-time purchase, not a subscription. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Manila on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:29,158,121" href="https://apps.apple.com/us/app/go-back/id6828231825">
           <div class="product-head">
             <img class="app-icon" src="assets/goback-icon.png" alt="Go Back? app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/go-back/id6828231825">Go Back?</a></h3>
-          <p>Was that the good taco place, or the one that made you sick? Rate any place in one tap &mdash; thumbs up, meh, or thumbs down &mdash; and see what you said last time before you walk back in. Private by design: no followers, no public reviews, no account. iPhone and iPad. <a href="https://apps.apple.com/us/app/go-back/id6828231825">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/go-back/id6828231825">
-            <img src="assets/app-store-badge.svg" alt="Download Go Back? on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:69,86,94">
+          <h3>Go Back?</h3>
+          <p>Was that the good taco place, or the one that made you sick? Rate any place in one tap &mdash; thumbs up, meh, or thumbs down &mdash; and see what you said last time before you walk back in. Private by design: no followers, no public reviews, no account. iPhone and iPad. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Go Back? on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:69,86,94" href="https://apps.apple.com/us/app/ship-oclock/id6836511767">
           <div class="product-head">
             <img class="app-icon" src="assets/shipoclock-icon.png" alt="Ship O'Clock app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/ship-oclock/id6836511767">Ship O'Clock</a></h3>
-          <p>Keeps ship time and shore time straight, so the all-aboard horn is never a surprise. The countdown runs on the port&rsquo;s own clock, not your phone&rsquo;s time zone, with a walking-buffer alert before the gangway lifts &mdash; packing lists, port-day plans and budget included. iPhone and iPad. <a href="https://apps.apple.com/us/app/ship-oclock/id6836511767">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/ship-oclock/id6836511767">
-            <img src="assets/app-store-badge.svg" alt="Download Ship O'Clock on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:207,94,69">
+          <h3>Ship O'Clock</h3>
+          <p>Keeps ship time and shore time straight, so the all-aboard horn is never a surprise. The countdown runs on the port&rsquo;s own clock, not your phone&rsquo;s time zone, with a walking-buffer alert before the gangway lifts &mdash; packing lists, port-day plans and budget included. iPhone and iPad. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Ship O'Clock on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:207,94,69" href="https://apps.apple.com/us/app/dogged/id6837374667">
           <div class="product-head">
             <img class="app-icon" src="assets/dogged-icon.png" alt="Dogged app icon" width="56" height="56" />
             <span class="badge badge-flagship">On the App Store</span>
           </div>
-          <h3><a href="https://apps.apple.com/us/app/dogged/id6837374667">Dogged</a></h3>
-          <p>The habit tracker that won&rsquo;t let it slide. Instead of one reminder at 9am, Dogged follows up through the day &mdash; faster as the day runs out, one last call before bed &mdash; then lets go at midnight. Share a habit with a partner or the whole house and keep one streak together. A one-time purchase, not a subscription. iPhone and iPad. <a href="https://apps.apple.com/us/app/dogged/id6837374667">View on the App Store &rarr;</a></p>
-          <a class="store-badge" href="https://apps.apple.com/us/app/dogged/id6837374667">
-            <img src="assets/app-store-badge.svg" alt="Download Dogged on the App Store" height="40" />
-          </a>
-        </div>
-        <div class="service-card reveal" style="--tint:176,136,62">
+          <h3>Dogged</h3>
+          <p>The habit tracker that won&rsquo;t let it slide. Instead of one reminder at 9am, Dogged follows up through the day &mdash; faster as the day runs out, one last call before bed &mdash; then lets go at midnight. Share a habit with a partner or the whole house and keep one streak together. A one-time purchase, not a subscription. iPhone and iPad. View on the App Store &rarr;</p>
+          <img class="store-badge" src="assets/app-store-badge.svg" alt="Download Dogged on the App Store" height="40" />
+        </a>
+        <a class="service-card reveal" style="--tint:176,136,62" href="privacy-huntadvisor.html">
           <div class="product-head">
             <img class="app-icon" src="assets/huntadvisor-icon.png" alt="Hunt Advisor app icon" width="56" height="56" />
             <span class="badge badge-soon">Coming soon</span>
           </div>
           <h3>Hunt Advisor</h3>
-          <p>Tells metal detectorists when a storm has cut the beach, and where to hunt when it has. It reads live NOAA buoys, tide stations and wave forecasts, scores how hard the surf is stripping the sand, and ranks every zone on your coast for the next low tide. No account and no tracking. <a href="privacy-huntadvisor.html">Privacy notice &rarr;</a></p>
-        </div>
-        <div class="service-card reveal" style="--tint:61,67,115">
+          <p>Tells metal detectorists when a storm has cut the beach, and where to hunt when it has. It reads live NOAA buoys, tide stations and wave forecasts, scores how hard the surf is stripping the sand, and ranks every zone on your coast for the next low tide. No account and no tracking. Privacy notice &rarr;</p>
+        </a>
+        <a class="service-card reveal" style="--tint:61,67,115" href="privacy-anchorlight.html">
           <div class="product-head">
             <img class="app-icon" src="assets/anchorlight-icon.png" alt="Anchorlight app icon" width="56" height="56" />
             <span class="badge badge-soon">Coming soon</span>
           </div>
           <h3>Anchorlight</h3>
-          <p>See every device on your network, and what&rsquo;s open. Anchorlight scans your Wi-Fi for anything joined to it, flags unexpected visitors, and points out ports and services left answering that shouldn&rsquo;t be. The scan runs entirely on your Mac &mdash; nothing about your network is ever sent anywhere. <a href="privacy-anchorlight.html">Privacy notice &rarr;</a></p>
-        </div>
+          <p>See every device on your network, and what&rsquo;s open. Anchorlight scans your Wi-Fi for anything joined to it, flags unexpected visitors, and points out ports and services left answering that shouldn&rsquo;t be. The scan runs entirely on your Mac &mdash; nothing about your network is ever sent anywhere. Privacy notice &rarr;</p>
+        </a>
       </div>
 
             <p class="apple-legal">Apple, the Apple logo and App Store are trademarks of Apple Inc., registered in the U.S. and other countries. Promotional artwork is provided by Apple as an accommodation only; Apple assumes no responsibility for its use and makes no representation regarding its accuracy or performance.</p>
