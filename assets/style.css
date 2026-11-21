@@ -14,10 +14,11 @@
   --bg: #ffffff;
   --surface: #f8fafc;
   --accent: #2563eb;
-  --accent-glow: rgba(37,99,235,0.10);
-  --accent-border: rgba(37,99,235,0.28);
+  --accent-glow: rgba(37,99,235,0.14);
+  --accent-border: rgba(37,99,235,0.35);
   --accent-hover: rgba(37,99,235,0.45);
   --accent-soft: rgba(37,99,235,0.22);
+  --accent-mid: #9333ea;
   --accent-2: #ea580c;
   --accent-2-glow: rgba(234,88,12,0.10);
   --accent-2-border: rgba(234,88,12,0.28);
@@ -28,11 +29,11 @@
   --faint: #64748b;
   --faint-strong: #475569;
   --border: rgba(15,23,42,0.10);
-  --grid: rgba(15,23,42,0.04);
-  --grid-opacity: 0.7;
-  --mesh-1: rgba(37,99,235,0.08);
-  --mesh-2: rgba(99,102,241,0.06);
-  --mesh-3: rgba(234,88,12,0.05);
+  --grid: rgba(15,23,42,0.055);
+  --grid-opacity: 0.8;
+  --mesh-1: rgba(37,99,235,0.16);
+  --mesh-2: rgba(147,51,234,0.12);
+  --mesh-3: rgba(234,88,12,0.12);
   --nav-bg: rgba(255,255,255,0.72);
   --body-weight: 400;
   color-scheme: light;
@@ -47,6 +48,7 @@
     --accent-border: rgba(59,130,246,0.3);
     --accent-hover: rgba(59,130,246,0.4);
     --accent-soft: rgba(59,130,246,0.25);
+    --accent-mid: #c084fc;
     --accent-2: #fb923c;
     --accent-2-glow: rgba(251,146,60,0.18);
     --accent-2-border: rgba(251,146,60,0.3);
@@ -59,9 +61,9 @@
     --border: rgba(255,255,255,0.07);
     --grid: rgba(255,255,255,0.07);
     --grid-opacity: 0.5;
-    --mesh-1: rgba(59,130,246,0.12);
-    --mesh-2: rgba(99,102,241,0.09);
-    --mesh-3: rgba(251,146,60,0.08);
+    --mesh-1: rgba(59,130,246,0.14);
+    --mesh-2: rgba(168,85,247,0.11);
+    --mesh-3: rgba(251,146,60,0.1);
     --nav-bg: rgba(10,14,23,0.68);
     --body-weight: 300;
     color-scheme: dark;
@@ -76,6 +78,7 @@
   --accent-border: rgba(59,130,246,0.3);
   --accent-hover: rgba(59,130,246,0.4);
   --accent-soft: rgba(59,130,246,0.25);
+  --accent-mid: #c084fc;
   --accent-2: #fb923c;
   --accent-2-glow: rgba(251,146,60,0.18);
   --accent-2-border: rgba(251,146,60,0.3);
@@ -88,9 +91,9 @@
   --border: rgba(255,255,255,0.07);
   --grid: rgba(255,255,255,0.07);
   --grid-opacity: 0.5;
-  --mesh-1: rgba(59,130,246,0.12);
-  --mesh-2: rgba(99,102,241,0.09);
-  --mesh-3: rgba(251,146,60,0.08);
+  --mesh-1: rgba(59,130,246,0.14);
+  --mesh-2: rgba(168,85,247,0.11);
+  --mesh-3: rgba(251,146,60,0.1);
   --nav-bg: rgba(10,14,23,0.68);
   --body-weight: 300;
   color-scheme: dark;
@@ -255,7 +258,7 @@ nav .container {
   font-style: italic;
   position: relative;
   display: inline-block;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-mid) 50%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -270,7 +273,7 @@ nav .container {
   bottom: 0.06em;
   height: 0.09em;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-mid) 50%, var(--accent-2) 100%);
   transform: scaleX(0);
   transform-origin: left;
   animation: sweepIn 0.8s 0.5s cubic-bezier(.16,1,.3,1) both;
@@ -300,7 +303,7 @@ nav .container {
   width: 14px;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, var(--accent), var(--accent-mid), var(--accent-2));
   flex-shrink: 0;
 }
 
@@ -315,6 +318,7 @@ nav .container {
 .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start;
   gap: 1.5rem;
   margin-bottom: 5rem;
   animation: fadeUp 0.9s 0.2s ease both;
@@ -323,26 +327,27 @@ nav .container {
   --tint: 37,99,235;
   position: relative;
   background:
-    linear-gradient(165deg, rgba(var(--tint),0.07), transparent 55%),
+    linear-gradient(165deg, rgba(var(--tint),0.14), transparent 60%),
     var(--surface);
   border: 1px solid var(--border);
-  border-top: 3px solid rgba(var(--tint), 0.65);
+  border-top: 3px solid rgba(var(--tint), 0.78);
   border-radius: 12px;
   padding: 1.8rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 8px 24px -16px rgba(var(--tint), 0.6);
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s, opacity 0.25s;
 }
-.service-card:hover { border-color: rgba(var(--tint), 0.3); border-top-color: rgba(var(--tint), 0.8); }
+.service-card:hover { border-color: rgba(var(--tint), 0.3); border-top-color: rgba(var(--tint), 0.88); }
 a.service-card {
   text-decoration: none;
   color: inherit;
 }
 a.service-card:hover {
   border-color: rgba(var(--tint), 0.45);
-  border-top-color: rgba(var(--tint), 0.9);
+  border-top-color: rgba(var(--tint), 0.95);
   transform: translateY(-4px);
-  box-shadow: 0 14px 32px -12px rgba(var(--tint), 0.4);
+  box-shadow: 0 16px 34px -12px rgba(var(--tint), 0.45);
 }
 
 /* .app-card (more.html) -- same tint-wash/border/hover-color language as
@@ -355,18 +360,19 @@ a.service-card:hover {
   text-decoration: none;
   color: inherit;
   background:
-    linear-gradient(165deg, rgba(var(--tint),0.07), transparent 55%),
+    linear-gradient(165deg, rgba(var(--tint),0.14), transparent 60%),
     var(--surface);
   border: 1px solid var(--border);
-  border-top: 3px solid rgba(var(--tint), 0.65);
+  border-top: 3px solid rgba(var(--tint), 0.78);
   border-radius: 12px;
+  box-shadow: 0 8px 24px -16px rgba(var(--tint), 0.6);
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s, opacity 0.25s;
 }
 .app-card:hover {
   border-color: rgba(var(--tint), 0.45);
-  border-top-color: rgba(var(--tint), 0.9);
+  border-top-color: rgba(var(--tint), 0.95);
   transform: translateY(-4px);
-  box-shadow: 0 14px 32px -12px rgba(var(--tint), 0.4);
+  box-shadow: 0 16px 34px -12px rgba(var(--tint), 0.45);
 }
 .app-card.soon { opacity: 0.6; }
 .app-card.soon:hover { opacity: 0.85; }
@@ -494,7 +500,7 @@ a.service-card:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 130%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 55%, var(--accent-2) 130%);
   color: var(--cta-text);
   text-decoration: none;
   padding: 0.8rem 1.8rem;
