@@ -14,239 +14,13 @@
   <meta property="og:url" content="https://vibesoftllc.com/nag.html" />
   <meta property="og:image" content="https://vibesoftllc.com/assets/nag-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="assets/style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* Light is the default. The dark palette applies when the visitor's system
-       asks for it, or when the toggle sets data-theme="dark" explicitly.
-       The dark token block is repeated for those two cases -- CSS has no way
-       to share one declaration list between a media query and a selector. */
-    :root {
-      --bg: #ffffff;
-      --surface: #f8fafc;
-      --accent: #2563eb;
-      --accent-glow: rgba(37,99,235,0.10);
-      --accent-border: rgba(37,99,235,0.28);
-      --accent-hover: rgba(37,99,235,0.45);
-      --accent-soft: rgba(37,99,235,0.22);
-      --accent-2: #ea580c;
-      --accent-2-glow: rgba(234,88,12,0.10);
-      --accent-2-border: rgba(234,88,12,0.28);
-      --cta-shadow: 0 4px 18px rgba(37,99,235,0.28);
-      --cta-text: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --faint: #64748b;
-      --faint-strong: #475569;
-      --border: rgba(15,23,42,0.10);
-      --grid: rgba(15,23,42,0.04);
-      --grid-opacity: 0.7;
-      --mesh-1: rgba(37,99,235,0.08);
-      --mesh-2: rgba(99,102,241,0.06);
-      --mesh-3: rgba(234,88,12,0.05);
-      --body-weight: 400;
-      color-scheme: light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) {
-        --bg: #0a0e17;
-        --surface: #111827;
-        --accent: #3b82f6;
-        --accent-glow: rgba(59,130,246,0.18);
-        --accent-border: rgba(59,130,246,0.3);
-        --accent-hover: rgba(59,130,246,0.4);
-        --accent-soft: rgba(59,130,246,0.25);
-        --accent-2: #fb923c;
-        --accent-2-glow: rgba(251,146,60,0.18);
-        --accent-2-border: rgba(251,146,60,0.3);
-        --cta-shadow: 0 0 30px rgba(59,130,246,0.3);
-        --cta-text: #ffffff;
-        --text: #f1f5f9;
-        --muted: #94a3b8;
-        --faint: rgba(148,163,184,0.5);
-        --faint-strong: rgba(148,163,184,0.65);
-        --border: rgba(255,255,255,0.07);
-        --grid: rgba(255,255,255,0.07);
-        --grid-opacity: 0.5;
-        --mesh-1: rgba(59,130,246,0.12);
-        --mesh-2: rgba(99,102,241,0.09);
-        --mesh-3: rgba(251,146,60,0.08);
-        --body-weight: 300;
-        color-scheme: dark;
-      }
-    }
-
-    :root[data-theme="dark"] {
-      --bg: #0a0e17;
-      --surface: #111827;
-      --accent: #3b82f6;
-      --accent-glow: rgba(59,130,246,0.18);
-      --accent-border: rgba(59,130,246,0.3);
-      --accent-hover: rgba(59,130,246,0.4);
-      --accent-soft: rgba(59,130,246,0.25);
-      --accent-2: #fb923c;
-      --accent-2-glow: rgba(251,146,60,0.18);
-      --accent-2-border: rgba(251,146,60,0.3);
-      --cta-shadow: 0 0 30px rgba(59,130,246,0.3);
-      --cta-text: #ffffff;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --faint: rgba(148,163,184,0.5);
-      --faint-strong: rgba(148,163,184,0.65);
-      --border: rgba(255,255,255,0.07);
-      --grid: rgba(255,255,255,0.07);
-      --grid-opacity: 0.5;
-      --mesh-1: rgba(59,130,246,0.12);
-      --mesh-2: rgba(99,102,241,0.09);
-      --mesh-3: rgba(251,146,60,0.08);
-      --body-weight: 300;
-      color-scheme: dark;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    /* Respect the OS-level motion preference -- the scroll-reveal, the hero
-       underline sweep, and every hover transition all collapse to instant,
-       once, rather than imposing motion on someone who asked their system
-       not to show it. */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      font-weight: var(--body-weight);
-      line-height: 1.7;
-      min-height: 100vh;
-      overflow-x: hidden;
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    /* Background mesh */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 10%, var(--mesh-1) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, var(--mesh-2) 0%, transparent 60%),
-        radial-gradient(ellipse 55% 45% at 85% 15%, var(--mesh-3) 0%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Grid overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-      opacity: var(--grid-opacity);
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* NAV */
-    nav {
-      position: relative;
-      z-index: 10;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: 1.5rem;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .logo span { color: var(--accent); }
-    .nav-contact {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 0.4rem 1rem;
-      border-radius: 100px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .nav-contact:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* THEME TOGGLE -- hidden until the inline script confirms JS is available,
-       since without JS the theme follows the system and cannot be changed. */
-    .theme-toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      color: var(--muted);
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    [data-js="ready"] .theme-toggle { display: inline-flex; }
-    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
-    .theme-toggle svg { width: 15px; height: 15px; }
-    .theme-toggle .icon-sun { display: none; }
-    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-
-    /* NAV LINKS */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .nav-link {
-      position: relative;
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -4px;
-      height: 1px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.25s ease;
-    }
-    .nav-link:hover { color: var(--text); }
-    .nav-link:hover::after { transform: scaleX(1); }
-
-    /* APP HERO */
+    /* APP HERO -- page-unique copy/layout; the em/underline treatment itself
+       lives in assets/style.css so it matches index.html and about.html.
+       .app-icon and .store-badge here are a bigger, standalone hero
+       presentation and intentionally override the product-grid defaults
+       of the same class names from the shared sheet. */
     .app-hero {
       padding: 6rem 0 4rem;
       display: flex;
@@ -282,36 +56,16 @@
       margin-bottom: 1.2rem;
       max-width: 640px;
     }
-    .app-hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-      position: relative;
-      display: inline-block;
-    }
-    .app-hero h1 em::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0.06em;
-      height: 0.09em;
-      border-radius: 2px;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: sweepIn 0.8s 0.5s cubic-bezier(.16,1,.3,1) both;
-    }
-    @keyframes sweepIn {
-      from { transform: scaleX(0); }
-      to   { transform: scaleX(1); }
-    }
     .app-hero p {
       font-size: 1.05rem;
       color: var(--muted);
       max-width: 560px;
     }
 
-    /* DOWNLOAD ROW: official badge + QR for the phone-on-the-desk visitor */
+    /* DOWNLOAD ROW: official badge + QR for the phone-on-the-desk visitor.
+       Resets the shared .store-badge box model (built for the unwrapped,
+       card-floor-anchored badge on index.html/more.html) since this one is
+       its own standalone, inline-block, 52px-tall badge next to a QR code. */
     .download-row {
       display: flex;
       align-items: center;
@@ -319,15 +73,17 @@
       flex-wrap: wrap;
       margin: 2.2rem 0 0;
     }
-    .store-badge img {
-      height: 52px;
-      display: block;
-    }
     .store-badge {
       display: inline-block;
+      height: auto;
+      width: auto;
+      margin-top: 0;
+      padding-top: 0;
+      align-self: auto;
       transition: opacity 0.2s, transform 0.2s;
     }
     .store-badge:hover { opacity: 0.85; transform: translateY(-1px); }
+    .store-badge img { height: 52px; display: block; }
     .qr-side {
       display: flex;
       align-items: center;
@@ -350,62 +106,8 @@
       line-height: 1.45;
     }
 
-    /* DIVIDER */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 3rem 0 4rem;
-    }
-
-    /* FEATURES (shared card grid) */
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-      animation: fadeUp 0.9s 0.2s ease both;
-    }
-    .service-card {
-      --tint: 241,118,108;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.8rem;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    }
-    /* These cards are plain divs -- nothing in "How it works" links anywhere --
-       so hover only gets a subtle border tint, never the lift+shadow a button
-       would get. Kept as a rule on the bare class (rather than a.service-card)
-       since this page has no linked cards to split it against. */
-    .service-card:hover { border-color: rgba(var(--tint), 0.3); }
-    .reveal { transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
-    [data-js="ready"] .reveal { opacity: 0; transform: translateY(22px) scale(0.98); }
-    [data-js="ready"] .reveal.in-view { opacity: 1; transform: none; }
-    .service-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-    }
-    .service-icon svg { width: 28px; height: 28px; display: block; }
-    .service-card h3 {
-      font-family: Georgia, 'Book Antiqua', Palatino, serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-    .service-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    /* FEATURES -- this page's cards are coral, not the shared default blue. */
+    .service-card { --tint: 241,118,108; }
 
     /* PRICING + PRIVACY STRIP */
     .app-note {
@@ -436,59 +138,10 @@
     }
     .app-note a:hover { border-color: var(--accent); }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 0;
-      position: relative;
-      z-index: 1;
-    }
-    footer .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      text-align: center;
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1.25rem;
-      justify-content: center;
-    }
-    .footer-links a {
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-more { margin-bottom: 1.4rem; }
-    .footer-more-title { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
-    .footer-more ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; justify-content: center; }
-    .footer-more a { font-size: 0.9rem; color: var(--faint-strong); text-decoration: none; }
-    .footer-more a:hover { color: var(--accent); }
-    .footer-more .soon { font-size: 0.9rem; color: var(--faint); }
-    footer .footer-copy { font-size: 0.78rem; color: var(--muted); }
-    .footer-affiliate {
-      font-size: 0.72rem;
-      color: var(--faint);
-      max-width: 580px;
-      line-height: 1.5;
-    }
-    .footer-affiliate a { color: var(--faint-strong); text-decoration: none; }
-    .footer-affiliate a:hover { color: var(--accent); }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 600px) {
       .app-hero { padding: 3.5rem 0 2.5rem; flex-direction: column; gap: 1.8rem; }
       .app-icon { width: 96px; height: 96px; border-radius: 21px; }
       .app-note { padding: 2rem; }
-      .nav-link { display: none; }
     }
   </style>
   <script>

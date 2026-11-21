@@ -23,13 +23,22 @@ Marketing/landing site for Vibesoft LLC, an app development company. Static HTML
 - `affiliate-disclosure.html` — FTC affiliate disclosure, linked from every page footer
 - `CNAME` — GitHub Pages custom domain
 
-## The one thing to know: there is no shared CSS
+## The one thing to know: there IS a shared stylesheet now
 
-**Every page carries its own complete copy of the design system in its own `<style>` block.** There is no stylesheet, no partials, no includes. A change to a token, the nav, or the footer must be applied to **all five HTML files** or the site drifts out of sync.
+**Superseded 2026-11-21.** Through 2026-11-21, every page carried its own complete copy of the design system in its own `<style>` block — no stylesheet, no partials, no includes — and that duplication caused real bugs (see the "complete redesign" section below: a positional-logic script corrupted CruiseSort's card and dropped a store-badge `src` attribute because the same markup pattern had to be hand-replicated 15 times).
 
-The same applies to the markup for `nav`, `footer` (footer links + copyright + affiliate blurb), and the `:root` token block — these are duplicated verbatim across pages. When editing one, edit them all. `sed -i ''` across the five filenames is the usual approach for token-level changes.
+As of that redesign, `assets/style.css` is the single shared stylesheet. Every real page (`index.html`, `about.html`, `nag.html`, `more.html`, `content-owners.html`, `terms.html`, `affiliate-disclosure.html`, and all `privacy-*.html` pages) links it with `<link rel="stylesheet" href="assets/style.css" />` in `<head>`, placed *before* that page's own `<style>` block so page-specific rules win the cascade by source order alone (same selector, same specificity — later wins).
 
-Page-specific CSS does exist on top of the shared base: `index.html` has `.hero`/`.about`, `about.html` has `.company-block`/`.support-block`, and the three legal pages have `.prose`.
+`assets/style.css` holds: the light/dark tokens, base reset, body/mesh/grid background (now with a slow `meshDrift` ambient animation), the sticky blurred nav + nav-link underline, the theme toggle, the `.service-card`/`.app-card` visual system (tint wash, colored top edge, hover lift reserved for whatever variant IS a link), `.reveal`/scroll-motion, the footer (including `.footer-more`), the plain legal-page `.page-header`/`.prose` system, `prefers-reduced-motion` support, and the shared `@keyframes`.
+
+**What stays page-specific, in each page's own (now much smaller) `<style>` block**, and why:
+- `index.html`: `.hero`/`.hero-eyebrow`, `.about`, `.contact*` — this page's own hero copy sizing and the two content blocks nothing else on the site has.
+- `about.html`: `.page-header`/`.page-eyebrow` (richer than the plain legal version — has an eyebrow and em-emphasis), `.company-block`, `.support-block`, `.contact-methods`, `.support-note`, `.contact*`.
+- `nag.html`: `.app-hero` and its own `.app-icon` (128px) and `.store-badge` (inline-block, 52px, next to a QR code) — both **intentionally override** the shared `.app-icon`/`.store-badge` defaults built for the product grid, and reset every box-model property the override needs rather than relying on partial cascade. `.download-row`, `.qr-*`, `.app-note`. Also overrides `--tint` to this page's coral.
+- `more.html`: `.page-header` copy, `.app-grid`/`.app-card` **layout only** (`display:flex; gap:1rem; align-items:flex-start; padding:1.4rem` — a horizontal icon-beside-text row, genuinely different from `.service-card`'s column layout) — the tint/border/hover-color part of `.app-card` lives in the shared file.
+- Legal/privacy pages: only what's genuinely unique to that one page — `affiliate-disclosure.html`'s `.disclosure-callout`, `privacy-huntadvisor.html`/`privacy-manila.html`'s `.prose code`/`.prose pre` for their technical appendices. Nothing else; the plain `.page-header`/`.prose` system is shared.
+
+**When adding a new page**, copy an existing page's `<head>` (link + minimal page-specific `<style>`) rather than re-embedding the whole design system — that's the entire point of this change. **When editing shared chrome** (nav, footer, tokens, card hover, motion), edit `assets/style.css` once; it reaches every page on next load, no propagation script required.
 
 ## Products
 
@@ -54,7 +63,7 @@ The site is **light by default** and supports dark mode three ways, in priority 
 2. `@media (prefers-color-scheme: dark) { :root:not([data-theme]) { … } }` — follows the OS when the visitor hasn't chosen.
 3. `:root[data-theme="dark"]` — set by the nav toggle, persisted in `localStorage` under `vs-theme`.
 
-The dark token list is **written out twice** (once in the media query, once in the attribute selector) because CSS cannot share one declaration list between a media query and a selector. Change one, change both — in all five files.
+The dark token list is **written out twice** (once in the media query, once in the attribute selector) because CSS cannot share one declaration list between a media query and a selector. Change one, change both — but as of the 2026-11-21 redesign below, only once, in `assets/style.css`, not per page.
 
 An inline `<script>` at the end of each `<head>` resolves the theme before first paint (avoiding a flash), sets `data-js="ready"`, and wires the toggle via delegated click on `document`. The toggle button is `display: none` until `data-js="ready"` appears, since without JS the theme can't be changed and a dead button would be worse than none. This is the site's only JavaScript.
 
@@ -80,6 +89,7 @@ An inline `<script>` at the end of each `<head>` resolves the theme before first
 | `--grid` / `--grid-opacity` | `rgba(15,23,42,.04)` / `.7` | `rgba(255,255,255,.07)` / `.5` | Background grid overlay |
 | `--mesh-1` / `--mesh-2` | blue / indigo, ~.07 | blue / indigo, ~.10 | Fixed gradient mesh, first two layers |
 | `--mesh-3` | orange, `.05` | orange, `.08` | Fixed gradient mesh, third layer — added 2026-11-21 alongside `--accent-2` for a richer, less single-note background |
+| `--nav-bg` | `rgba(255,255,255,.72)` | `rgba(10,14,23,.68)` | Translucent fill behind the sticky nav's backdrop-filter blur — added in the 2026-11-21 redesign |
 | `--body-weight` | `400` | `300` | Body font weight |
 
 Light-mode contrast is verified against WCAG AA: text 17.9:1, muted 7.6:1, accent 5.2:1, faint 4.8:1 on white. If you darken the background or lighten any of these, recheck — `--faint` has the least headroom. `--accent-2` is not part of that check — keep it off body text and confine it to decorative uses (glows, underlines, badge accents) until it's verified.
@@ -121,6 +131,19 @@ Propagated to all 23 real pages by the same verified-identical-block method as t
 Also caught on this pass: the "(FLA)" prefix fix from earlier in the week was only ever applied to `index.html`'s footer. `about.html` (both its meta-item and its vanity line), `privacy.html`, `terms.html`, and `affiliate-disclosure.html` were all still showing the full "(FLA) FLA-SHIP" — quietly contradicting the jurisdiction-agnostic rule on every page that matters most for it (the legal pages). Fixed everywhere now; see the Contact section below for the corrected reference.
 
 Use this entry as the reference for the pattern rather than re-deriving it, on `content-owners.html` or anywhere else that later gets its own icons/cards.
+
+### The same day, later: the complete redesign and the move to a shared stylesheet
+
+The operator asked for a complete redesign, not another polish pass, and said to push it to main without a further round of confirmation first. This did two things at once:
+
+1. **Replaced per-page duplicated CSS with `assets/style.css`.** See "The one thing to know" above — this is the architectural half of the change, and it directly addresses the root cause of the CruiseSort/store-badge bug from earlier the same day: that bug happened because the same markup pattern had to be hand-replicated across every page's own copy of the CSS, and a positional-logic script got one page's structural difference wrong. A shared stylesheet doesn't remove the need for careful markup edits, but it removes the need to *repeat* a CSS change 23 times, which is where repetition-driven mistakes come from.
+2. **A bolder visual language**, all living in the shared file now: cards show their color at rest (a 3px tinted top edge plus a faint tinted background wash, using each app's already-sampled `--tint`), not only on hover; the nav is `position: sticky` with a `backdrop-filter: blur(14px) saturate(160%)` frosted-glass treatment over `--nav-bg`; the hero/page-header emphasis word is a gradient-fill (`background-clip: text`) rather than a flat accent color, still paired with the animated underline sweep; the background mesh drifts slowly (`meshDrift`, 26s loop) instead of sitting static; `.section-label` gets a small two-color gradient tick before the uppercase text.
+
+**Migration method, since this is the template for any future redesign pass**: for each page, confirm (via `md5` of the exact substring between fixed anchors — the opening `<style>` tag through a known marker, not eyeballing) which CSS is byte-identical to every other page versus genuinely unique to that one, move only the identical part into the shared file, and verify structural balance (`<div>`/`<a>`/`<style>` open-close counts, grepped per file) after every edit before moving to the next page. Two real mismatches surfaced doing this and are worth remembering:
+- `.service-card` and `.app-card` (`more.html`) look like the same component but are **not** — `.app-card` is a horizontal icon-beside-text row at `padding: 1.4rem`, `.service-card` is a vertical column at `padding: 1.8rem`. A first pass combined them into one shared selector and would have broken `more.html`'s layout had it shipped; the fix was to share only the tint/border/hover-color *language* between them and leave layout (`display`/`flex-direction`/`gap`/`padding`) page-specific.
+- `nag.html`'s hero `.app-icon` (128px) and `.store-badge` (inline-block, 52px, next to a QR code) reuse class names the shared file also defines for the product-grid context (56px icon; unwrapped 40px badge image). The page-specific override resets every box-model property the shared rule set (`height`/`width`/`margin-top`/`padding-top`/`align-self`) rather than assuming the two non-overlapping declarations would just add up cleanly — partial overrides of a shared rule are exactly how a shared stylesheet reintroduces the bugs it's meant to prevent.
+
+A scripted *first* attempt at this same migration had a bug of its own: a replace call matched a block starting with the `<style>` opening tag itself, so removing that block deleted the opener and left a dangling `</style>` with no matching tag and no `<link>` in its place, across 15 files. Caught immediately via direct inspection (not by trusting the script's own success report) before committing anything, reverted cleanly with `git checkout --` since nothing had been committed yet, and re-done with index-based slicing against confirmed-exact anchors instead of hand-typed replacement strings — the same "verify before trusting a bulk script" discipline as the CruiseSort incident, applied one level earlier this time.
 
 Fonts are **system stacks, not webfonts** — Google Fonts was deliberately removed (commit `61d4fe1`) so pages have zero external requests. Headings use `Georgia, 'Book Antiqua', Palatino, serif`; body uses `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif` at `font-weight: 300`. Don't reintroduce a font CDN.
 
