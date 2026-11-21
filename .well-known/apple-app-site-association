@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["75KHAANSYL.com.vibesoftllc.clipjar"],
+        "components": [
+          { "/": "/r/", "comment": "Clipjar shared-recipe links: the recipe is in the #fragment" },
+          { "/": "/r", "comment": "Same, without the trailing slash" }
+        ]
+      }
+    ]
+  }
+}
