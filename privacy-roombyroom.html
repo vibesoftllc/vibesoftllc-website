@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232563eb'/><text x='32' y='45' font-family='Georgia,serif' font-size='36' font-weight='bold' fill='white' text-anchor='middle'>V</text></svg>" />
   <meta name="description" content="Privacy notice for Room by Room. Your home inventory stays on your devices and your own iCloud. No data is collected." />
   <title>Privacy — Room by Room</title>
   <style>
@@ -97,6 +98,19 @@
 
     html { scroll-behavior: smooth; }
 
+    /* Respect the OS-level motion preference -- the scroll-reveal, the hero
+       underline sweep, and every hover transition all collapse to instant,
+       once, rather than imposing motion on someone who asked their system
+       not to show it. */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -166,12 +180,25 @@
       gap: 1.5rem;
     }
     .nav-link {
+      position: relative;
       font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
     .nav-link:hover { color: var(--text); }
+    .nav-link:hover::after { transform: scaleX(1); }
     .nav-contact {
       font-size: 0.85rem;
       color: var(--muted);

@@ -108,6 +108,18 @@ The lift + shadow hover (above) was originally applied to every `.service-card`/
 
 The rule going forward: a card only gets the lift-and-glow hover if it is (or is wrapped by) the single link it represents. A descriptive card with no destination gets, at most, a faint border change — never anything that reads as a button.
 
+`more.html`'s "Coming soon" cards got the same whole-card treatment the same day: Clipjar, Hunt Advisor, and Anchorlight are now each a single `<a>` to their privacy notice (all three pages already existed), rather than an unlinked `<div>` whose `cursor: default` and no-op hover already hinted they weren't clickable — if there's somewhere real to send the click, send it there instead of just suppressing the affordance.
+
+### Also 2026-11-21: three site-wide additions, plus a missed Florida fix
+
+Propagated to all 23 real pages by the same verified-identical-block method as the token changes above:
+
+- **A favicon** — none existed before. It's an inline data-URI SVG (`<link rel="icon" href="data:image/svg+xml,...">`), a blue rounded square with a white "V," so there's still no external request even for this — consistent with the self-hosted-assets rule.
+- **`prefers-reduced-motion: reduce` support** — a blanket rule collapsing every animation and transition to near-zero duration for anyone whose OS asks for it. There's real motion to respect that preference for now (the scroll-reveal, the hero underline sweep, every hover transition) where there wasn't before this week's passes.
+- **An underline sweep on `.nav-link:hover`** — matches the hero's own underline treatment in miniature, for a small piece of cross-page cohesion.
+
+Also caught on this pass: the "(FLA)" prefix fix from earlier in the week was only ever applied to `index.html`'s footer. `about.html` (both its meta-item and its vanity line), `privacy.html`, `terms.html`, and `affiliate-disclosure.html` were all still showing the full "(FLA) FLA-SHIP" — quietly contradicting the jurisdiction-agnostic rule on every page that matters most for it (the legal pages). Fixed everywhere now; see the Contact section below for the corrected reference.
+
 Use this entry as the reference for the pattern rather than re-deriving it, on `content-owners.html` or anywhere else that later gets its own icons/cards.
 
 Fonts are **system stacks, not webfonts** — Google Fonts was deliberately removed (commit `61d4fe1`) so pages have zero external requests. Headings use `Georgia, 'Book Antiqua', Palatino, serif`; body uses `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif` at `font-weight: 300`. Don't reintroduce a font CDN.
@@ -137,6 +149,6 @@ Two addresses, both landing on the `@vibesoftllc.com` catchall:
 
 - `admin@vibesoftllc.com` — business, press, partnership. Used by the nav "Get in touch" button and the legal-page contact blocks.
 - `dev@vibesoftllc.com` — app support, bug reports, feature requests. Used by the `#support` block on `about.html`.
-- Phone `(352) 352-7447`, shown alongside the vanity spelling `(FLA) FLA-SHIP`. Always link it as `tel:+13523527447` — the vanity string is display-only.
+- Phone `(352) 352-7447`, shown alongside the vanity spelling `FLA-SHIP` (the `(FLA)` prefix was dropped site-wide 2026-11-21 — it was quietly contradicting the jurisdiction-agnostic rule above on every page that showed it). Always link it as `tel:+13523527447` — the vanity string is display-only.
 
 `about.html#support` is the **Apple App Store Support URL**. App Review Guideline 1.5 requires that page to give users a working way to make contact, so the email and phone in `.contact-methods` must stay visible and correct there. Don't reduce it to a form or a bare address.

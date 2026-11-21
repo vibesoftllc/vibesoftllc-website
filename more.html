@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232563eb'/><text x='32' y='45' font-family='Georgia,serif' font-size='36' font-weight='bold' fill='white' text-anchor='middle'>V</text></svg>" />
   <meta name="description" content="Every app from Vibesoft LLC, in one place." />
   <title>More from Vibesoft</title>
   <style>
@@ -97,6 +98,19 @@
 
     html { scroll-behavior: smooth; }
 
+    /* Respect the OS-level motion preference -- the scroll-reveal, the hero
+       underline sweep, and every hover transition all collapse to instant,
+       once, rather than imposing motion on someone who asked their system
+       not to show it. */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -166,12 +180,25 @@
       gap: 1.5rem;
     }
     .nav-link {
+      position: relative;
       font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
     .nav-link:hover { color: var(--text); }
+    .nav-link:hover::after { transform: scaleX(1); }
     .nav-contact {
       font-size: 0.85rem;
       color: var(--muted);
@@ -277,8 +304,11 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 28px -10px rgba(var(--tint), 0.35);
     }
-    .app-card.soon { opacity: 0.6; cursor: default; }
-    .app-card.soon:hover { border-color: var(--border); transform: none; box-shadow: none; }
+    /* Still dimmed to read as "not out yet," but now a real link (to the
+       privacy notice) -- so it keeps the normal .app-card:hover lift/glow
+       rather than suppressing it. */
+    .app-card.soon { opacity: 0.6; }
+    .app-card.soon:hover { opacity: 0.85; }
 
     /* Scroll-triggered reveal, same no-JS-safe pattern as index.html: only
        hides .reveal once data-js="ready" is set, so JS-disabled visitors
@@ -454,18 +484,18 @@
 
       <p class="section-label">Coming soon</p>
       <div class="app-grid" id="soon-grid">
-        <div class="app-card soon reveal" style="--tint:84,125,91" data-slug="clipjar">
+        <a class="app-card soon reveal" style="--tint:84,125,91" data-slug="clipjar" href="privacy-clipjar.html">
           <img class="app-icon" src="assets/clipjar-icon.png" alt="" />
           <div><h3>Clipjar</h3><p>Every loose recipe, preserved.</p><span class="tag">Coming soon</span></div>
-        </div>
-        <div class="app-card soon reveal" style="--tint:176,136,62" data-slug="huntadvisor">
+        </a>
+        <a class="app-card soon reveal" style="--tint:176,136,62" data-slug="huntadvisor" href="privacy-huntadvisor.html">
           <img class="app-icon" src="assets/huntadvisor-icon.png" alt="" />
           <div><h3>Hunt Advisor</h3><p>A field advisor for metal detecting.</p><span class="tag">In review</span></div>
-        </div>
-        <div class="app-card soon reveal" style="--tint:61,67,115" data-slug="anchorlight">
+        </a>
+        <a class="app-card soon reveal" style="--tint:61,67,115" data-slug="anchorlight" href="privacy-anchorlight.html">
           <img class="app-icon" src="assets/anchorlight-icon.png" alt="" />
           <div><h3>Anchorlight</h3><p>See every device on your network, and what's open.</p><span class="tag">In review</span></div>
-        </div>
+        </a>
       </div>
 
     </div>
