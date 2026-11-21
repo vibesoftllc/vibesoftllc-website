@@ -348,28 +348,37 @@
       <div class="prose">
 
         <section>
-          <p>Clipjar is a recipe manager. If you write, photograph or publish recipes and something about how Clipjar handles your work concerns you, email <a href="mailto:dev@vibesoftllc.com?subject=Content%20owner%20request">dev@vibesoftllc.com</a>. A person reads every message, and we aim to reply within a few business days.</p>
+          <p>Clipjar is a recipe manager. If you write, photograph or publish recipes and something about how Clipjar handles your work concerns you, email <a href="mailto:dev@vibesoftllc.com?subject=Content%20owner%20request">dev@vibesoftllc.com</a>. A person reads every message.</p>
         </section>
 
         <section>
           <h2>What Clipjar does with a recipe page</h2>
-          <p>A Clipjar user saves a recipe they want to cook into their own private collection, on their own devices and in their own iCloud. They can do this by sharing a page from Safari, or by giving Clipjar a link, which it downloads once, directly from your site. Vibesoft runs no server: we hold no copy of any recipe, cannot see anyone&rsquo;s collection, and publish nothing.</p>
+          <p>A Clipjar user saves a recipe into their own private collection, on their own devices and in their own iCloud. There are two ways a page gets in:</p>
           <ul>
-            <li><strong>Credit stays attached.</strong> Every recipe keeps a link to your page, your site&rsquo;s name and author where the page gives them, and the date it was saved.</li>
-            <li><strong>Photos stay private.</strong> When a user adds a recipe from a link, Clipjar keeps a small reference copy of the dish&rsquo;s photo with it, which they can turn off. A website&rsquo;s photo is never included when a recipe is shared or exported.</li>
-            <li><strong>Sharing sends people to you.</strong> When a user shares a recipe that came from a website, the link carries its title, ingredients and the address of your page, not your written method. The recipient&rsquo;s Clipjar then gets the method from your page, as a visit to your site.</li>
-            <li><strong>Downloads are honest.</strong> Clipjar identifies itself as Clipjar when it downloads a page, carries no cookies, and does not log in or get around a paywall.</li>
+            <li><strong>Shared from Safari.</strong> Safari hands Clipjar the page the user is already reading. Clipjar makes no request of its own.</li>
+            <li><strong>From a link.</strong> When a user pastes, drops or shares a bare link, Clipjar downloads that one page, once, directly from your site, without cookies or a login. It does not get past a paywall or a sign-in. Its request uses a standard Safari browser identification with <code>Clipjar/1.0</code> added at the end, so it appears in your logs as a Safari visitor that names Clipjar.</li>
+          </ul>
+          <p>Vibesoft runs no recipe server: we hold no copy of any recipe, cannot see anyone&rsquo;s collection, and publish nothing.</p>
+          <ul>
+            <li><strong>Credit.</strong> A recipe saved from your site keeps your page&rsquo;s address and the date it was saved, and shows your site&rsquo;s name and the author where your page&rsquo;s recipe markup gives them. The app has no way to edit the source fields.</li>
+            <li><strong>Photos.</strong> When a recipe is added from a link, Clipjar also downloads the dish photo your page names and keeps an 800-pixel copy with the recipe. This is on by default and the user can turn it off. A recipe shared from Safari gets no photo. Website photos are never included when a recipe is shared or exported.</li>
+            <li><strong>Sharing.</strong> When a user shares a recipe that came from a website, the link carries its title, ingredients, tags and your page&rsquo;s address, but not your written method, summary or the user&rsquo;s notes. The recipient&rsquo;s Clipjar then downloads your page, the same way as a pasted link, to fill in the method. That is a download by the app, not a browser visit; your ads and page scripts don&rsquo;t run.</li>
           </ul>
         </section>
 
         <section>
           <h2>What we can do if you ask</h2>
           <ul>
-            <li><strong>Stop downloading from your site.</strong> We add your domain to Clipjar&rsquo;s do-not-download list in the next app update. From then on Clipjar fetches nothing from your site, page or photo, whether a user pastes a link or opens one shared with them. It saves the link instead, for them to open themselves.</li>
-            <li><strong>Correct how you&rsquo;re credited.</strong> If the site name or author comes out wrong, tell us what your pages should show and we&rsquo;ll fix the importer.</li>
+            <li><strong>Stop downloading your pages.</strong> We add your domain, and its subdomains, to Clipjar&rsquo;s do-not-download list in the next app update. Once a user has that update, Clipjar downloads no page from your site, and so no photo named on one, whether they paste a link or open a recipe shared with them. It saves the link instead, for them to open themselves.</li>
+            <li><strong>Look at how you&rsquo;re credited.</strong> If your site name or author comes out wrong, tell us what your pages should show. Where Clipjar is reading your page wrongly, we fix it in an update.</li>
             <li><strong>Answer questions</strong> about anything else Clipjar does with public recipe pages.</li>
           </ul>
-          <p>One limit, stated plainly: because Clipjar has no server, we can&rsquo;t reach into a user&rsquo;s device or iCloud to delete a recipe they have already saved. That copy is theirs, kept for their own cooking, and the same is true of a page saved in a browser.</p>
+          <p>What we can&rsquo;t do, stated plainly:</p>
+          <ul>
+            <li>The list takes effect only in app updates, and only for users who install them.</li>
+            <li>It doesn&rsquo;t cover a page a user shares from Safari, because that is their own browser handing over a page they are reading, the same as saving it from the browser.</li>
+            <li>Because Clipjar has no server, we can&rsquo;t reach into a user&rsquo;s device or iCloud to delete a recipe they have already saved.</li>
+          </ul>
         </section>
 
         <section>
