@@ -258,6 +258,25 @@
     .app-hero h1 em {
       font-style: italic;
       color: var(--accent);
+      position: relative;
+      display: inline-block;
+    }
+    .app-hero h1 em::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0.06em;
+      height: 0.09em;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: sweepIn 0.8s 0.5s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes sweepIn {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
     }
     .app-hero p {
       font-size: 1.05rem;
@@ -328,17 +347,27 @@
       animation: fadeUp 0.9s 0.2s ease both;
     }
     .service-card {
+      --tint: 241,118,108;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.8rem;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .service-card:hover { border-color: var(--accent-hover); transform: translateY(-2px); }
+    .service-card:hover {
+      border-color: rgba(var(--tint), 0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px -10px rgba(var(--tint), 0.35);
+    }
+    .reveal { transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
+    [data-js="ready"] .reveal { opacity: 0; transform: translateY(22px) scale(0.98); }
+    [data-js="ready"] .reveal.in-view { opacity: 1; transform: none; }
     .service-icon {
       font-size: 1.5rem;
       margin-bottom: 1rem;
+      color: var(--accent);
     }
+    .service-icon svg { width: 28px; height: 28px; display: block; }
     .service-card h3 {
       font-family: Georgia, 'Book Antiqua', Palatino, serif;
       font-size: 1.1rem;
@@ -499,23 +528,23 @@
 
       <p class="section-label">How it works</p>
       <div class="services">
-        <div class="service-card">
-          <div class="service-icon">🔗</div>
+        <div class="service-card reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H6a4 4 0 0 0 0 8h3M15 7h3a4 4 0 0 1 0 8h-3M8 11h8"/></svg></div>
           <h3>Uses your existing reminders</h3>
           <p>No new to-do system to adopt. Nag reads the Apple Reminders you already have and writes completions straight back — Siri, shared lists, and everything else keep working.</p>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🔔</div>
+        <div class="service-card reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
           <h3>Persistent by design</h3>
           <p>One alert is easy to swipe away. Nag re-notifies on your schedule, escalating for overdue tasks and pacing by priority, until the task is actually complete.</p>
         </div>
-        <div class="service-card">
-          <div class="service-icon">😴</div>
+        <div class="service-card reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
           <h3>Respectful about it</h3>
           <p>Quiet hours silence the night. Snooze from the notification when now isn't the time, and cap the number of nags per task so persistence never becomes fatigue.</p>
         </div>
-        <div class="service-card">
-          <div class="service-icon">💻</div>
+        <div class="service-card reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></div>
           <h3>Menu bar on the Mac</h3>
           <p>On macOS, Nag lives in the menu bar with your active reminders one click away — complete or snooze without leaving what you're doing.</p>
         </div>
@@ -548,5 +577,28 @@
     </div>
   </footer>
 
+  <script>
+    // Scroll-triggered reveal; see index.html for the fuller comment. Safe
+    // with no JS or no IntersectionObserver -- everything just stays visible.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      var cards = document.querySelectorAll('.reveal');
+      cards.forEach(function (card, i) {
+        card.style.transitionDelay = (i % 4) * 0.07 + 's';
+        io.observe(card);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (card) {
+        card.classList.add('in-view');
+      });
+    }
+  </script>
 </body>
 </html>

@@ -260,6 +260,7 @@
       animation: fadeUp 0.8s 0.15s ease both;
     }
     .app-card {
+      --tint: 37,99,235;
       display: flex;
       gap: 1rem;
       align-items: flex-start;
@@ -269,11 +270,22 @@
       padding: 1.4rem;
       text-decoration: none;
       color: inherit;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .app-card:hover { border-color: var(--accent-hover); transform: translateY(-2px); }
+    .app-card:hover {
+      border-color: rgba(var(--tint), 0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px -10px rgba(var(--tint), 0.35);
+    }
     .app-card.soon { opacity: 0.6; cursor: default; }
-    .app-card.soon:hover { border-color: var(--border); transform: none; }
+    .app-card.soon:hover { border-color: var(--border); transform: none; box-shadow: none; }
+
+    /* Scroll-triggered reveal, same no-JS-safe pattern as index.html: only
+       hides .reveal once data-js="ready" is set, so JS-disabled visitors
+       always see every card. */
+    .reveal { transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
+    [data-js="ready"] .reveal { opacity: 0; transform: translateY(22px) scale(0.98); }
+    [data-js="ready"] .reveal.in-view { opacity: 1; transform: none; }
     .app-icon {
       width: 56px;
       height: 56px;
@@ -386,73 +398,73 @@
 
       <p class="section-label">Available now</p>
       <div class="app-grid" id="live-grid">
-        <a class="app-card" data-slug="cruisesort" href="https://cruisesort.com">
+        <a class="app-card reveal" style="--tint:78,129,239" data-slug="cruisesort" href="https://cruisesort.com">
           <img class="app-icon" src="assets/cruisesort-icon.png" alt="" />
           <div><h3>CruiseSort</h3><p>Compare cruise deals across lines and dates.</p><span class="tag">Web</span></div>
         </a>
-        <a class="app-card" data-slug="nag" href="https://apps.apple.com/us/app/nag-to-do-list-reminders/id6792002234">
+        <a class="app-card reveal" style="--tint:241,118,108" data-slug="nag" href="https://apps.apple.com/us/app/nag-to-do-list-reminders/id6792002234">
           <img class="app-icon" src="assets/nag-icon.png" alt="" />
           <div><h3>Nag</h3><p>To-do list &amp; reminders that actually follow up.</p><span class="tag">iOS · Mac</span></div>
         </a>
-        <a class="app-card" data-slug="deja" href="https://apps.apple.com/us/app/deja-photo-storage-cleaner/id6799176200">
+        <a class="app-card reveal" style="--tint:128,92,170" data-slug="deja" href="https://apps.apple.com/us/app/deja-photo-storage-cleaner/id6799176200">
           <img class="app-icon" src="assets/deja-icon.png" alt="" />
           <div><h3>Deja</h3><p>Find and clear duplicate &amp; similar photos.</p><span class="tag">iOS · Mac</span></div>
         </a>
-        <a class="app-card" data-slug="clearbid" href="https://apps.apple.com/us/app/clearbid-contractor-quotes/id6799534619">
+        <a class="app-card reveal" style="--tint:41,65,84" data-slug="clearbid" href="https://apps.apple.com/us/app/clearbid-contractor-quotes/id6799534619">
           <img class="app-icon" src="assets/clearbid-icon.png" alt="" />
           <div><h3>ClearBid</h3><p>Build clean, professional contractor quotes.</p><span class="tag">iOS</span></div>
         </a>
-        <a class="app-card" data-slug="fullpay" href="https://apps.apple.com/us/app/fullpay-video-poker-trainer/id6792873151">
+        <a class="app-card reveal" style="--tint:19,93,65" data-slug="fullpay" href="https://apps.apple.com/us/app/fullpay-video-poker-trainer/id6792873151">
           <img class="app-icon" src="assets/fullpay-icon.png" alt="" />
           <div><h3>FullPay</h3><p>Video poker trainer for full-pay strategy.</p><span class="tag">iOS</span></div>
         </a>
-        <a class="app-card" data-slug="deedbox" href="https://apps.apple.com/us/app/deedbox-rental-property-tax/id6801331272">
+        <a class="app-card reveal" style="--tint:43,116,90" data-slug="deedbox" href="https://apps.apple.com/us/app/deedbox-rental-property-tax/id6801331272">
           <img class="app-icon" src="assets/deedbox-icon.png" alt="" />
           <div><h3>Deedbox</h3><p>Rental property records, organized for tax time.</p><span class="tag">iOS · Mac</span></div>
         </a>
-        <a class="app-card" data-slug="roombyroom" href="https://apps.apple.com/us/app/room-by-room-home-inventory/id6801625722">
+        <a class="app-card reveal" style="--tint:68,69,106" data-slug="roombyroom" href="https://apps.apple.com/us/app/room-by-room-home-inventory/id6801625722">
           <img class="app-icon" src="assets/roombyroom-icon.png" alt="" />
           <div><h3>Room by Room</h3><p>A home inventory for insurance, done by room.</p><span class="tag">iOS</span></div>
         </a>
-        <a class="app-card" data-slug="manila" href="https://apps.apple.com/us/app/manila-offline-pdf-editor/id6806659685">
+        <a class="app-card reveal" style="--tint:58,105,200" data-slug="manila" href="https://apps.apple.com/us/app/manila-offline-pdf-editor/id6806659685">
           <img class="app-icon" src="assets/manila-icon.png" alt="" />
           <div><h3>Manila</h3><p>Offline PDF editor &mdash; merge, sign, convert.</p><span class="tag">iOS</span></div>
         </a>
-        <a class="app-card" data-slug="mileclaim" href="https://apps.apple.com/us/app/mileclaim/id6798314526">
+        <a class="app-card reveal" style="--tint:68,143,100" data-slug="mileclaim" href="https://apps.apple.com/us/app/mileclaim/id6798314526">
           <img class="app-icon" src="assets/mileclaim-icon.png" alt="" />
           <div><h3>MileClaim</h3><p>A mileage log built for tax deductions.</p><span class="tag">iOS</span></div>
         </a>
-        <a class="app-card" data-slug="dotmates" href="https://apps.apple.com/us/app/dotmates/id6806671681">
+        <a class="app-card reveal" style="--tint:168,85,247" data-slug="dotmates" href="https://apps.apple.com/us/app/dotmates/id6806671681">
           <img class="app-icon" src="assets/dotmates-icon.png" alt="" />
           <div><h3>Dotmates</h3><p>A calm drag-and-drop puzzle game.</p><span class="tag">iOS</span></div>
         </a>
-        <a class="app-card" data-slug="goback" href="https://apps.apple.com/us/app/id6828231825">
+        <a class="app-card reveal" style="--tint:29,158,121" data-slug="goback" href="https://apps.apple.com/us/app/id6828231825">
           <img class="app-icon" src="assets/goback-icon.png" alt="" />
           <div><h3>Go Back?</h3><p>A restaurant journal for places worth a return.</p><span class="tag">iOS</span></div>
+        </a>
+        <a class="app-card reveal" style="--tint:69,86,94" data-slug="shipoclock" href="https://apps.apple.com/us/app/ship-oclock/id6836511767">
+          <img class="app-icon" src="assets/shipoclock-icon.png" alt="" />
+          <div><h3>Ship O'Clock</h3><p>Cruise trip planning &amp; all-aboard countdowns.</p><span class="tag">iOS</span></div>
+        </a>
+        <a class="app-card reveal" style="--tint:207,94,69" data-slug="dogged" href="https://apps.apple.com/us/app/dogged/id6837374667">
+          <img class="app-icon" src="assets/dogged-icon.png" alt="" />
+          <div><h3>Dogged</h3><p>The habit tracker that won't let it slide.</p><span class="tag">iOS</span></div>
         </a>
       </div>
 
       <p class="section-label">Coming soon</p>
       <div class="app-grid" id="soon-grid">
-        <div class="app-card soon" data-slug="clipjar">
+        <div class="app-card soon reveal" style="--tint:84,125,91" data-slug="clipjar">
           <img class="app-icon" src="assets/clipjar-icon.png" alt="" />
           <div><h3>Clipjar</h3><p>Every loose recipe, preserved.</p><span class="tag">Coming soon</span></div>
         </div>
-        <div class="app-card soon" data-slug="huntadvisor">
+        <div class="app-card soon reveal" style="--tint:176,136,62" data-slug="huntadvisor">
           <img class="app-icon" src="assets/huntadvisor-icon.png" alt="" />
           <div><h3>Hunt Advisor</h3><p>A field advisor for metal detecting.</p><span class="tag">In review</span></div>
         </div>
-        <div class="app-card soon" data-slug="shipoclock">
-          <img class="app-icon" src="assets/shipoclock-icon.png" alt="" />
-          <div><h3>Ship O'Clock</h3><p>Cruise trip planning &amp; all-aboard countdowns.</p><span class="tag">In review</span></div>
-        </div>
-        <div class="app-card soon" data-slug="anchorlight">
+        <div class="app-card soon reveal" style="--tint:61,67,115" data-slug="anchorlight">
           <img class="app-icon" src="assets/anchorlight-icon.png" alt="" />
           <div><h3>Anchorlight</h3><p>See every device on your network, and what's open.</p><span class="tag">In review</span></div>
-        </div>
-        <div class="app-card soon" data-slug="dogged">
-          <img class="app-icon" src="assets/dogged-icon.png" alt="" />
-          <div><h3>Dogged</h3><p>The habit tracker that won't let it slide.</p><span class="tag">In review</span></div>
         </div>
       </div>
 
@@ -480,6 +492,30 @@
       var card = document.querySelector('.app-card[data-slug="' + from.replace(/[^a-z0-9-]/gi, '') + '"]');
       if (card) card.style.display = 'none';
     })();
+  </script>
+
+  <script>
+    // Scroll-triggered reveal; see index.html for the fuller comment. Safe
+    // with no JS or no IntersectionObserver -- everything just stays visible.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      var cards = document.querySelectorAll('.reveal');
+      cards.forEach(function (card, i) {
+        card.style.transitionDelay = (i % 4) * 0.07 + 's';
+        io.observe(card);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (card) {
+        card.classList.add('in-view');
+      });
+    }
   </script>
 
 </body>

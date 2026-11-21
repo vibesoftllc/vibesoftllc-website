@@ -86,14 +86,20 @@ Light-mode contrast is verified against WCAG AA: text 17.9:1, muted 7.6:1, accen
 
 ### 2026-11-21 visual refresh
 
-A second accent (`--accent-2`, warm orange) and a third mesh layer were added everywhere per the token table above — propagated by exact string match across all pages, since the blocks were confirmed byte-identical first (the approach `sed -i ''` comment above describes). `index.html` additionally got page-specific treatment that has **not** been extended to the other pages yet:
+A second accent (`--accent-2`, warm orange) and a third mesh layer were added everywhere per the token table above — propagated by exact string match across all pages, since the blocks were confirmed byte-identical first (the approach `sed -i ''` comment above describes).
 
-- The three "What We Do" icons are inline SVGs (`.service-icon svg`) instead of emoji — emoji as icons was the dated-looking part of the old design, more than the color palette was.
-- Every `.service-card` carries a `--tint` custom property (an R,G,B triple, inline `style="--tint:…"`) sampled from that app's actual icon artwork via PIL, used for a colored hover glow (`.service-card:hover` reads `--tint` instead of a fixed `--accent-hover`). Cards with no per-app tint (the three "What We Do" cards) fall back to the blue accent's RGB, set as `.service-card`'s own default.
-- `.reveal` + a `data-js="ready"`-gated IntersectionObserver (new `<script>` at the end of `<body>`) gives cards a staggered scroll-in animation instead of the old load-time-only `fadeUp`. Follows the same no-JS-safe pattern as the theme toggle: nothing is hidden unless `data-js="ready"` is already set, so a visitor with JS disabled sees everything, just without the motion.
-- The hero's italic word gets an animated gradient-sweep underline (`.hero h1 em::after`, `--accent` to `--accent-2`) on load.
+`index.html` got the full page-specific treatment first, then the same pattern was extended to **`more.html`, `nag.html`, and `about.html`** the same day:
 
-If another page's own emoji icons, cards, or hero treatment get the same pass, use this entry as the reference rather than re-deriving the pattern.
+- Emoji icons are inline SVGs (`.service-icon svg` for the three "What We Do" cards on `index.html`/`about.html`, and for `nag.html`'s four "How it works" cards) — emoji as icons was the dated-looking part of the old design, more than the color palette was.
+- Every card (`.service-card` on the three pages above, `.app-card` on `more.html`) carries a `--tint` custom property (an R,G,B triple, inline `style="--tint:…"`) sampled from that app's actual icon artwork via PIL, used for a colored hover glow instead of a fixed `--accent-hover`. Cards with no per-app identity (the "What We Do"/"How it works" cards) fall back to the blue accent's RGB, set as the card class's own default.
+- `.reveal` + a `data-js="ready"`-gated IntersectionObserver (a `<script>` at the end of `<body>`, same snippet on all four pages) gives cards a staggered scroll-in instead of the old load-time-only `fadeUp`. Follows the same no-JS-safe pattern as the theme toggle: nothing is hidden unless `data-js="ready"` is already set, so a visitor with JS disabled sees everything, just without the motion.
+- Each page's hero italic word gets an animated gradient-sweep underline (`h1 em::after`, `--accent` to `--accent-2`) on load — `.hero h1 em` on `index.html`, `.app-hero h1 em` on `nag.html`, `.page-header h1 em` on `about.html` (three different selectors, same rule, since each page names its hero section differently).
+
+Also on `more.html` specifically: Dogged and Ship O'Clock were moved from the "Coming soon" grid to "Available now" with real store links — both had gone live since that page was last touched, the same staleness `index.html`'s content fix caught a day earlier.
+
+**Not yet extended**: the three legal pages (`privacy.html`, `terms.html`, `affiliate-disclosure.html`) and `content-owners.html` deliberately weren't touched beyond the shared token change — legal text fading in on scroll is bad UX for content that should read as immediately stable, and none of those pages have cards or emoji icons to begin with. If a future pass wants *any* motion on those pages, keep it off the `.prose` content itself.
+
+Use this entry as the reference for the pattern rather than re-deriving it, on `content-owners.html` or anywhere else that later gets its own icons/cards.
 
 Fonts are **system stacks, not webfonts** — Google Fonts was deliberately removed (commit `61d4fe1`) so pages have zero external requests. Headings use `Georgia, 'Book Antiqua', Palatino, serif`; body uses `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif` at `font-weight: 300`. Don't reintroduce a font CDN.
 
