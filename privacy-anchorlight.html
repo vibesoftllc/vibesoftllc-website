@@ -20,6 +20,9 @@
       --accent-border: rgba(37,99,235,0.28);
       --accent-hover: rgba(37,99,235,0.45);
       --accent-soft: rgba(37,99,235,0.22);
+      --accent-2: #ea580c;
+      --accent-2-glow: rgba(234,88,12,0.10);
+      --accent-2-border: rgba(234,88,12,0.28);
       --cta-shadow: 0 4px 18px rgba(37,99,235,0.28);
       --cta-text: #ffffff;
       --text: #0f172a;
@@ -29,8 +32,9 @@
       --border: rgba(15,23,42,0.10);
       --grid: rgba(15,23,42,0.04);
       --grid-opacity: 0.7;
-      --mesh-1: rgba(37,99,235,0.06);
-      --mesh-2: rgba(99,102,241,0.05);
+      --mesh-1: rgba(37,99,235,0.08);
+      --mesh-2: rgba(99,102,241,0.06);
+      --mesh-3: rgba(234,88,12,0.05);
       --body-weight: 400;
       color-scheme: light;
     }
@@ -44,6 +48,9 @@
         --accent-border: rgba(59,130,246,0.3);
         --accent-hover: rgba(59,130,246,0.4);
         --accent-soft: rgba(59,130,246,0.25);
+        --accent-2: #fb923c;
+        --accent-2-glow: rgba(251,146,60,0.18);
+        --accent-2-border: rgba(251,146,60,0.3);
         --cta-shadow: 0 0 30px rgba(59,130,246,0.3);
         --cta-text: #ffffff;
         --text: #f1f5f9;
@@ -53,8 +60,9 @@
         --border: rgba(255,255,255,0.07);
         --grid: rgba(255,255,255,0.07);
         --grid-opacity: 0.5;
-        --mesh-1: rgba(59,130,246,0.09);
-        --mesh-2: rgba(99,102,241,0.07);
+        --mesh-1: rgba(59,130,246,0.12);
+        --mesh-2: rgba(99,102,241,0.09);
+        --mesh-3: rgba(251,146,60,0.08);
         --body-weight: 300;
         color-scheme: dark;
       }
@@ -68,6 +76,9 @@
       --accent-border: rgba(59,130,246,0.3);
       --accent-hover: rgba(59,130,246,0.4);
       --accent-soft: rgba(59,130,246,0.25);
+      --accent-2: #fb923c;
+      --accent-2-glow: rgba(251,146,60,0.18);
+      --accent-2-border: rgba(251,146,60,0.3);
       --cta-shadow: 0 0 30px rgba(59,130,246,0.3);
       --cta-text: #ffffff;
       --text: #f1f5f9;
@@ -77,8 +88,9 @@
       --border: rgba(255,255,255,0.07);
       --grid: rgba(255,255,255,0.07);
       --grid-opacity: 0.5;
-      --mesh-1: rgba(59,130,246,0.09);
-      --mesh-2: rgba(99,102,241,0.07);
+      --mesh-1: rgba(59,130,246,0.12);
+      --mesh-2: rgba(99,102,241,0.09);
+      --mesh-3: rgba(251,146,60,0.08);
       --body-weight: 300;
       color-scheme: dark;
     }
@@ -102,7 +114,8 @@
       inset: 0;
       background:
         radial-gradient(ellipse 80% 60% at 20% 10%, var(--mesh-1) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, var(--mesh-2) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 50% at 80% 80%, var(--mesh-2) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 85% 15%, var(--mesh-3) 0%, transparent 65%);
       pointer-events: none;
       z-index: 0;
     }

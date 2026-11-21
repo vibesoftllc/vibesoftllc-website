@@ -69,6 +69,8 @@ An inline `<script>` at the end of each `<head>` resolves the theme before first
 | `--accent-border` | `rgba(37,99,235,.28)` | `rgba(59,130,246,.3)` | Link underlines, pill borders |
 | `--accent-hover` | `rgba(37,99,235,.45)` | `rgba(59,130,246,.4)` | Card hover border |
 | `--accent-soft` | `rgba(37,99,235,.22)` | `rgba(59,130,246,.25)` | Legal-page accent |
+| `--accent-2` | `#ea580c` | `#fb923c` | Warm secondary accent — added 2026-11-21 for the hero underline sweep and the mesh's third gradient layer; not yet used anywhere contrast-critical, so it hasn't been WCAG-checked against text |
+| `--accent-2-glow` / `--accent-2-border` | `rgba(234,88,12,.10)` / `.28` | `rgba(251,146,60,.18)` / `.3` | Same shape as the blue accent's glow/border pair, for `--accent-2` |
 | `--cta-shadow` | soft drop | blue glow | Hero CTA — glow only works on dark |
 | `--cta-text` | `#ffffff` | `#ffffff` | Text on accent fill |
 | `--text` | `#0f172a` | `#f1f5f9` | Primary text |
@@ -76,10 +78,22 @@ An inline `<script>` at the end of each `<head>` resolves the theme before first
 | `--faint` / `--faint-strong` | `#64748b` / `#475569` | `rgba(148,163,184,.5)` / `.65` | Footer affiliate microcopy |
 | `--border` | `rgba(15,23,42,.10)` | `rgba(255,255,255,.07)` | Card/section borders |
 | `--grid` / `--grid-opacity` | `rgba(15,23,42,.04)` / `.7` | `rgba(255,255,255,.07)` / `.5` | Background grid overlay |
-| `--mesh-1` / `--mesh-2` | blue / indigo, ~.05 | blue / indigo, ~.08 | Fixed gradient mesh |
+| `--mesh-1` / `--mesh-2` | blue / indigo, ~.07 | blue / indigo, ~.10 | Fixed gradient mesh, first two layers |
+| `--mesh-3` | orange, `.05` | orange, `.08` | Fixed gradient mesh, third layer — added 2026-11-21 alongside `--accent-2` for a richer, less single-note background |
 | `--body-weight` | `400` | `300` | Body font weight |
 
-Light-mode contrast is verified against WCAG AA: text 17.9:1, muted 7.6:1, accent 5.2:1, faint 4.8:1 on white. If you darken the background or lighten any of these, recheck — `--faint` has the least headroom.
+Light-mode contrast is verified against WCAG AA: text 17.9:1, muted 7.6:1, accent 5.2:1, faint 4.8:1 on white. If you darken the background or lighten any of these, recheck — `--faint` has the least headroom. `--accent-2` is not part of that check — keep it off body text and confine it to decorative uses (glows, underlines, badge accents) until it's verified.
+
+### 2026-11-21 visual refresh
+
+A second accent (`--accent-2`, warm orange) and a third mesh layer were added everywhere per the token table above — propagated by exact string match across all pages, since the blocks were confirmed byte-identical first (the approach `sed -i ''` comment above describes). `index.html` additionally got page-specific treatment that has **not** been extended to the other pages yet:
+
+- The three "What We Do" icons are inline SVGs (`.service-icon svg`) instead of emoji — emoji as icons was the dated-looking part of the old design, more than the color palette was.
+- Every `.service-card` carries a `--tint` custom property (an R,G,B triple, inline `style="--tint:…"`) sampled from that app's actual icon artwork via PIL, used for a colored hover glow (`.service-card:hover` reads `--tint` instead of a fixed `--accent-hover`). Cards with no per-app tint (the three "What We Do" cards) fall back to the blue accent's RGB, set as `.service-card`'s own default.
+- `.reveal` + a `data-js="ready"`-gated IntersectionObserver (new `<script>` at the end of `<body>`) gives cards a staggered scroll-in animation instead of the old load-time-only `fadeUp`. Follows the same no-JS-safe pattern as the theme toggle: nothing is hidden unless `data-js="ready"` is already set, so a visitor with JS disabled sees everything, just without the motion.
+- The hero's italic word gets an animated gradient-sweep underline (`.hero h1 em::after`, `--accent` to `--accent-2`) on load.
+
+If another page's own emoji icons, cards, or hero treatment get the same pass, use this entry as the reference rather than re-deriving the pattern.
 
 Fonts are **system stacks, not webfonts** — Google Fonts was deliberately removed (commit `61d4fe1`) so pages have zero external requests. Headings use `Georgia, 'Book Antiqua', Palatino, serif`; body uses `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif` at `font-weight: 300`. Don't reintroduce a font CDN.
 
