@@ -347,7 +347,18 @@
     .share .open-app { display: none; font-weight: 600; padding: .8rem 1.6rem; border-radius: 999px;
       background: #4a805c; color: #fff; text-decoration: none; }
     :root[data-js="ready"] .share .open-app.has-recipe { display: inline-block; }
-    .share .soon { font-weight: 600; }
+    [hidden] { display: none !important; }
+    .share .store-badge { display: inline-block; transition: opacity 0.2s; }
+    .share .store-badge:hover { opacity: 0.85; }
+    .share .store-badge img { height: 52px; display: block; }
+    .share .credit { font-size: .95rem; color: var(--faint-strong); margin-top: -.25rem; }
+    .share .recipe { text-align: left; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.4rem 1.6rem; margin-top: 2rem; }
+    .share .recipe h2 { font-family: Georgia, 'Book Antiqua', Palatino, serif; font-size: 1.15rem; margin: 0 0 .6rem; }
+    .share .recipe ul, .share .recipe ol { padding-left: 1.2rem; margin-bottom: 1rem; color: var(--text); }
+    .share .recipe li { margin-bottom: .3rem; line-height: 1.5; }
+    .share .recipe li.section { list-style: none; margin-left: -1.2rem; font-weight: 600; margin-top: .6rem; }
+    .share .recipe .method-note { font-size: .9rem; margin: 0; text-align: left; }
     .share .fine { font-size: .9rem; margin-top: 2.5rem; }
   </style>
   <script>
@@ -391,15 +402,25 @@
     <div class="container">
       <section class="share">
         <img class="app-icon" src="../assets/clipjar-icon.png" alt="Clipjar" />
-        <h1>Someone shared a recipe with you</h1>
-        <p>It opens in <strong>Clipjar</strong>, the recipe box for iPhone, iPad and Mac. Get the app, then tap the link you were sent again and the recipe drops straight into your collection.</p>
+        <h1 id="share-title">Someone shared a recipe with you</h1>
+        <p class="credit" id="share-credit" hidden></p>
+        <p id="share-lede">It opens in <strong>Clipjar</strong>, the recipe box for iPhone, iPad and Mac. Get the app, then tap the link you were sent again and the recipe drops straight into your collection.</p>
+        <div class="recipe" id="share-recipe" hidden>
+          <h2>Ingredients</h2>
+          <ul id="share-ingredients"></ul>
+          <div id="share-method-block" hidden>
+            <h2>Method</h2>
+            <ol id="share-method"></ol>
+          </div>
+          <p class="method-note" id="share-method-note" hidden>The method comes from the original page when you open the recipe in Clipjar.</p>
+        </div>
         <div class="actions">
-          <!-- LAUNCH: replace this line with the App Store badge and the
-               campaign-tokened store link, as on nag.html. -->
-          <p class="soon">Clipjar is coming soon to the App Store.</p>
+          <a class="store-badge" href="https://apps.apple.com/us/app/clipjar-recipe-book/id6837559460?itscg=30200&amp;itsct=apps_box_badge">
+            <img src="../assets/app-store-badge.svg" alt="Download Clipjar on the App Store" />
+          </a>
           <a class="open-app" id="open-app" href="#">Already have Clipjar? Open the recipe</a>
         </div>
-        <p class="fine">Clipjar has no account and no server. The recipe travels inside the link you were sent, and this page never sees it.</p>
+        <p class="fine">Clipjar has no account and no server. The recipe travels inside the link you were sent. This page reads it in your browser and never sends it anywhere.</p>
       </section>
     </div>
   </main>
@@ -424,15 +445,61 @@
 
   <script>
     // A universal link opens Clipjar directly when it is tapped in Messages or
-    // Mail. Opened here in Safari instead (or typed into the address bar), it
-    // lands on this page, so the button hands the same fragment to the app's
-    // own clipjar:// scheme. Nothing is sent anywhere.
+    // Mail. Opened here in Safari instead (or on a device without Clipjar), it
+    // lands on this page, which reads the recipe out of its own #fragment --
+    // in the browser, nothing sent anywhere -- shows it, and offers the App
+    // Store and the app's clipjar:// scheme.
+    //
+    // Format (RecipeShare.swift): "1." + base64url(raw DEFLATE(JSON)).
+    // A website's recipe carries title, ingredients and credit but not its
+    // method ("o": true) -- the app downloads that from the original page.
+    // The source is shown as plain text, never as a link.
     (function () {
       var hash = window.location.hash.slice(1);
+      if (!/^1\.[A-Za-z0-9_-]+$/.test(hash)) return;
       var button = document.getElementById('open-app');
-      if (!/^1\.[A-Za-z0-9_-]+$/.test(hash) || !button) return;
       button.href = 'clipjar://r#' + hash;
       button.classList.add('has-recipe');
+      if (typeof DecompressionStream === 'undefined') return;
+
+      var b64 = hash.slice(2).replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      var bytes;
+      try { bytes = Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); }); } catch (e) { return; }
+      var stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+      new Response(stream).text().then(function (text) {
+        var r = JSON.parse(text);
+        if (!r || typeof r.t !== 'string') return;
+        var $ = function (id) { return document.getElementById(id); };
+        var title = r.t.trim() || 'A recipe';
+        $('share-title').textContent = title;
+        document.title = title + ' \u00b7 Clipjar';
+        var credit = [];
+        if (r.w) credit.push('From ' + r.w);
+        if (r.b) credit.push('by ' + r.b);
+        if (credit.length) { $('share-credit').textContent = credit.join(' '); $('share-credit').hidden = false; }
+        $('share-lede').innerHTML = 'Someone shared this recipe with you. Get <strong>Clipjar</strong>, the recipe box for iPhone, iPad and Mac, then tap the link you were sent again and it drops straight into your collection.';
+
+        var list = $('share-ingredients');
+        (r.i || []).forEach(function (line) {
+          var li = document.createElement('li');
+          if (line.indexOf('## ') === 0) { li.className = 'section'; line = line.slice(3); }
+          li.textContent = line;
+          list.appendChild(li);
+        });
+        var steps = r.m || [];
+        if (steps.length) {
+          var ol = $('share-method');
+          steps.forEach(function (step) {
+            if (step.h) { var h = document.createElement('li'); h.className = 'section'; h.textContent = step.h; ol.appendChild(h); }
+            var li = document.createElement('li'); li.textContent = step.x; ol.appendChild(li);
+          });
+          $('share-method-block').hidden = false;
+        } else if (r.o) {
+          $('share-method-note').hidden = false;
+        }
+        if (list.children.length || steps.length) $('share-recipe').hidden = false;
+      }).catch(function () { /* a damaged link keeps the generic page */ });
     })();
   </script>
 
