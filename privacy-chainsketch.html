@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232563eb'/><text x='32' y='45' font-family='Georgia,serif' font-size='36' font-weight='bold' fill='white' text-anchor='middle'>V</text></svg>" />
+  <meta name="description" content="Privacy notice for Chainsketch. Games run directly between the devices playing them; nothing is sent to us. No data is collected." />
+  <title>Privacy — Chainsketch</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+  </style>
+  <script>
+    // Runs before first paint so the stored theme does not flash.
+    (function () {
+      var root = document.documentElement;
+      var stored = null;
+      try { stored = localStorage.getItem('vs-theme'); } catch (e) {}
+      var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', stored === 'dark' || stored === 'light' ? stored : system);
+      root.setAttribute('data-js', 'ready');
+
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest && e.target.closest('.theme-toggle');
+        if (!btn) return;
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        try { localStorage.setItem('vs-theme', next); } catch (e) {}
+      });
+    })();
+  </script>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a class="logo" href="index.html">Vibe<span>soft</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="about.html">About</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <a class="nav-contact" href="mailto:dev@vibesoftllc.com">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <div class="page-header">
+        <h1>Chainsketch</h1>
+        <p class="meta">Privacy notice &nbsp;·&nbsp; Effective November 26, 2026 &nbsp;·&nbsp; Vibesoft LLC</p>
+      </div>
+
+      <div class="prose">
+
+        <section>
+          <p><strong>Chainsketch collects nothing.</strong> There is no account, no sign-in, no analytics, no advertising, no crash reporter and no server of ours. We never receive your drawings, your guesses, your name or anything else about you.</p>
+          <p>Its App Store privacy label reads <strong>Data Not Collected</strong>, in every category. This page says the same thing as the policy that ships inside the app, readable there offline under Settings &rsaquo; Privacy.</p>
+        </section>
+
+        <section>
+          <h2>What stays on your device</h2>
+          <ul>
+            <li><strong>A player name and a random player ID.</strong> The name is a made-up one (like &ldquo;Brave Moose&rdquo;) until you change it. The ID is a random code created on your device so a game can recognise you if you drop out and come back. Neither is linked to you, your Apple Account or your device.</li>
+            <li><strong>Past games.</strong> Every game you play is kept on your device, with its chains, drawings, guesses and hearts, so you can look at it or share it again later. You can delete any of them from Past games, and deleting the app deletes them all.</li>
+            <li><strong>The game in progress</strong>, so the app can find its way back to it if it is closed mid-game.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>What goes to the other players</h2>
+          <p>A game runs directly between the phones and tablets in it. Your name, your player ID, your drawings, your guesses and your hearts go to the device hosting the game, which passes them to the other players in that game. That is how the game works, and it goes nowhere else.</p>
+          <p>Devices connect in one of two ways:</p>
+          <ul>
+            <li><strong>Nearby Apple devices</strong> use Apple&rsquo;s peer-to-peer networking (Bluetooth and Wi-Fi), which is encrypted.</li>
+            <li><strong>Players on the same Wi-Fi network</strong>, including the Android version of Chainsketch, connect directly to the host over that network. This connection is not encrypted, so someone else on the same network could in principle see the game&rsquo;s drawings and guesses while it is being played. Play on a network you trust.</li>
+          </ul>
+          <p>Nothing from a game is sent to the internet.</p>
+        </section>
+
+        <section>
+          <h2>The one request the app makes to the internet</h2>
+          <p>At most once a day, Chainsketch asks Apple&rsquo;s public App Store lookup whether a newer version of Chainsketch is available, so Settings can tell you. The request contains only Chainsketch&rsquo;s own public App Store ID. It contains nothing about you and goes to Apple, not to us.</p>
+        </section>
+
+        <section>
+          <h2>Things that only happen when you tap them</h2>
+          <ul>
+            <li><strong>Sharing</strong> a chain or the awards uses the system share sheet. The image goes wherever you choose to send it.</li>
+            <li><strong>More from Vibesoft</strong> opens <a href="more.html">a page on this website</a> in your web browser. The app itself records nothing about it; what the browser sees is covered by the <a href="privacy.html">company policy</a>.</li>
+            <li><strong>Buying the host unlock</strong> is handled entirely by Apple. We do not see your payment details or your Apple Account.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Children</h2>
+          <p>Chainsketch has no accounts, no chat and no way to contact strangers: you play only with the people whose devices join your game.</p>
+        </section>
+
+        <section>
+          <h2>Changes and contact</h2>
+          <p>If this policy changes, the new version will ship inside the app and on this page. The company-wide policy, which also covers this website, is at <a href="privacy.html">vibesoftllc.com/privacy</a>.</p>
+          <p>Questions: <a href="mailto:dev@vibesoftllc.com">dev@vibesoftllc.com</a></p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-more">
+        <p class="footer-more-title">More from Vibesoft</p>
+        <p><a href="more.html?from=chainsketch">See every app we've made &rarr;</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      </div>
+      <p class="footer-copy">© 2026 Vibesoft LLC. All rights reserved.</p>
+      <p class="footer-affiliate">Some Vibesoft applications may contain affiliate links. We may earn a commission when you click through and make a purchase, at no additional cost to you. <a href="affiliate-disclosure.html">Learn more</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
